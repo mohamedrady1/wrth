@@ -1,0 +1,46 @@
+<div class="container">
+  <nav aria-label="breadcrumb" class="breadcrumb-container">
+    <div class="breadcrumb-links">
+      <a class="breadcrumb-link" routerLink="/">{{ navbarLocal.home[lang] }}</a>
+      <span class="breadcrumb-divider" *ngIf="!isProgramRoot"> &gt; </span>
+      <a *ngIf="!isProgramRoot" class="breadcrumb-link" routerLink="/program">{{
+        navbarLocal.programs[lang]
+        }}</a>
+    </div>
+  </nav>
+
+  <section *ngIf="isProgramRoot">
+    <div class="container mb-5">
+      <h2>{{ navbarLocal?.programs[lang] }}</h2>
+      <div class="program mt-5">
+        <div class="program__item" *ngFor="let program of programs">
+          <a [routerLink]="[program?.slug]" class="d-block h-100">
+            <img [src]="program.url" [alt]="program.title" />
+            <div class="program__item__content" [ngStyle]="lang === 'ar' ? {'left': '20px'} : {'right': '20px'}">
+              <span class=" more align-items-center d-flex shrink-0 mt-3 mb-2 rounded-circle text-left">
+                <svg width="30" viewBox="0 0 32 32" style="transform:rotate(180deg);"
+                  [ngStyle]="{'transform': lang === 'ar' ? 'rotate(180deg)' : 'rotate(0deg)'}" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="5"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g id="icomoon-ignore"> </g>
+                    <path
+                      d="M19.159 16.767l0.754-0.754-6.035-6.035-0.754 0.754 5.281 5.281-5.256 5.256 0.754 0.754 3.013-3.013z"
+                      fill="#000000"> </path>
+                  </g>
+                </svg>
+              </span>
+              <h3>
+                {{ lang === "ar" ? program.titleAr : program.title }}
+              </h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div *ngIf="!isProgramRoot">
+    <router-outlet></router-outlet>
+  </div>
+</div>

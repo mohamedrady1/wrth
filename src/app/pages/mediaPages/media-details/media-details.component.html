@@ -1,0 +1,186 @@
+<!-- <div *ngIf="!isLoading">
+  <img
+    [src]="pageContent?.imageUrl || ''"
+    [alt]="pageContent?.title"
+    class="mb-4 w-100"
+    *ngIf="pageContent?.imageUrl"
+  />
+  <h1 class="mb-3">
+    {{ lang === "ar" ? pageContent?.titleAr || "" : pageContent?.title || "" }}
+  </h1>
+  <div
+    [innerHtml]="
+      lang === 'ar'
+        ? pageContent?.descriptionAr || ''
+        : pageContent?.description || ''
+    "
+    class="mb-5 pb-5"
+  ></div>
+</div>
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div> -->
+<div *ngIf="!isLoading">
+  <div class="page-path d-flex flex-wrap position-relative align-items-center gap-3 mb-3">
+    <a [routerLink]="['']">
+      {{ lang === "ar" ?"الرئيسية" : "Home" }}
+    </a>
+    <svg viewBox="0 0 32 32" [ngStyle]="{'transform': lang === 'ar' ? 'rotate(180deg)' : 'none'}" width="30px"
+      version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <g id="icomoon-ignore"> </g>
+        <path d="M19.159 16.767l0.754-0.754-6.035-6.035-0.754 0.754 5.281 5.281-5.256 5.256 0.754 0.754 3.013-3.013z"
+          fill="#000000"> </path>
+      </g>
+    </svg>
+    <a [routerLink]="['/media/news']">
+      {{ lang === "ar" ? "المركز الاعلامي " : "Media Center" }}
+    </a>
+    <svg viewBox="0 0 32 32" [ngStyle]="{'transform': lang === 'ar' ? 'rotate(180deg)' : 'none'}" width="30px"
+      version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <g id="icomoon-ignore"> </g>
+        <path d="M19.159 16.767l0.754-0.754-6.035-6.035-0.754 0.754 5.281 5.281-5.256 5.256 0.754 0.754 3.013-3.013z"
+          fill="#000000"> </path>
+      </g>
+    </svg>
+    <a [routerLink]="['/media/'+mediaType.slug]">
+      {{ lang === "ar" ? mediaType?.titleAr || "" : mediaType?.title || "" }}
+    </a>
+  </div>
+  <div class="page-title " [ngClass]="{'ltr': lang=='en', 'rtl': lang=='ar'}" class="title">
+    <h1>
+      {{ lang === "ar" ? pageContent?.titleAr || "" : pageContent?.title || "" }}
+
+    </h1>
+  </div>
+  <div class="page row d-flex flex-wrap"
+    [ngStyle]="mediaType.type === 'blogs' ? {'padding-top': '0px'} : {'padding-top': '70px'}">
+    <!-- Sidebar -->
+    <div class="col-12 " [ngClass]="mediaType.type == 'blogs' ? 'col-md-3' : 'col-lg-3'">
+      <app-side-bar [lang]="lang" [groups]="groups" [heading]="heading" [Type]="mediaType"
+        [articleType]="pageContent?.articleType"></app-side-bar>
+    </div>
+    <ng-container *ngIf="mediaType.type!=='photo-gallery'">
+      <div class="col-12" [ngClass]="mediaType.type == 'blogs' ? 'col-md-9' : 'col-lg-9'"
+        [ngClass]="mediaType.type == 'blogs' ? 'col-md-9' : 'col-lg-9'">
+        <div>
+          <ng-container *ngIf="pageContent?.imageUrl&&!imageError">
+            <div class="img-container mb-lg-4 mb-md-3 mb-2">
+              <img [src]="pageContent?.imageUrl || ''"
+                [altText]="lang === 'ar' ? pageContent?.titleAr || '' : pageContent?.title || ''" appImgError
+                appLazyLoadImg />
+            </div>
+          </ng-container>
+
+          <!-- Dynamic Content -->
+
+          <div class=" page-content">
+            <div [innerHtml]="lang === 'ar' ? pageContent?.descriptionAr || '' : pageContent?.description || ''"
+              class=" mb-5 pb-5 lh-1"></div>
+            <div class="share d-flex gap-5">
+              <span> {{ lang === "ar" ? 'مشاركة' :'Share' }} </span>
+              <div class="links">
+                <ul class="d-flex">
+                  <li class="list-unstyled">
+                    <a href="javascript:void(0)" (click)="openPopup('https://twitter.com/intent/tweet?url=')">
+                      <svg width="45px" fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                        </g>
+                        <g id="SVGRepo_iconCarrier">
+                          <g id="7935ec95c421cee6d86eb22ecd12f847">
+                            <path style="display: inline;"
+                              d="M459.186,151.787c0.203,4.501,0.305,9.023,0.305,13.565 c0,138.542-105.461,298.285-298.274,298.285c-59.209,0-114.322-17.357-160.716-47.104c8.212,0.973,16.546,1.47,25.012,1.47 c49.121,0,94.318-16.759,130.209-44.884c-45.887-0.841-84.596-31.154-97.938-72.804c6.408,1.227,12.968,1.886,19.73,1.886 c9.55,0,18.816-1.287,27.617-3.68c-47.955-9.633-84.1-52.001-84.1-102.795c0-0.446,0-0.882,0.011-1.318 c14.133,7.847,30.294,12.562,47.488,13.109c-28.134-18.796-46.637-50.885-46.637-87.262c0-19.212,5.16-37.218,14.193-52.7 c51.707,63.426,128.941,105.156,216.072,109.536c-1.784-7.675-2.718-15.674-2.718-23.896c0-57.891,46.941-104.832,104.832-104.832 c30.173,0,57.404,12.734,76.525,33.102c23.887-4.694,46.313-13.423,66.569-25.438c-7.827,24.485-24.434,45.025-46.089,58.002 c21.209-2.535,41.426-8.171,60.222-16.505C497.448,118.542,479.666,137.004,459.186,151.787z">
+                            </path>
+                          </g>
+                        </g>
+                      </svg></a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" (click)="openPopup('https://www.facebook.com/sharer/sharer.php?u=')">
+                      <svg width="45px" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                        </g>
+                        <g id="SVGRepo_iconCarrier">
+                          <path fill-rule="evenodd"
+                            d="M15.1742424,5.3203125 L17,5.3203125 L17,2.140625 C16.6856061,2.09765625 15.6022727,2 14.3409091,2 C11.7083333,2 9.90530303,3.65625 9.90530303,6.69921875 L9.90530303,9.5 L7,9.5 L7,13.0546875 L9.90530303,13.0546875 L9.90530303,22 L13.4659091,22 L13.4659091,13.0546875 L16.2537879,13.0546875 L16.6969697,9.5 L13.4659091,9.5 L13.4659091,7.05078125 C13.4659091,6.0234375 13.7424242,5.3203125 15.1742424,5.3203125 Z">
+                          </path>
+                        </g>
+                      </svg></a>
+                  </li>
+                  <li><a href="javascript:void(0)"
+                      (click)="openPopup('https://www.linkedin.com/sharing/share-offsite/?url=')">
+                      <svg width="45px" fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                        </g>
+                        <g id="SVGRepo_iconCarrier">
+                          <g id="7935ec95c421cee6d86eb22ecd125aef">
+                            <path style="display: inline; fill-rule: evenodd; clip-rule: evenodd;"
+                              d="M116.504,500.219V170.654H6.975v329.564H116.504 L116.504,500.219z M61.751,125.674c38.183,0,61.968-25.328,61.968-56.953c-0.722-32.328-23.785-56.941-61.252-56.941 C24.994,11.781,0.5,36.394,0.5,68.722c0,31.625,23.772,56.953,60.53,56.953H61.751L61.751,125.674z M177.124,500.219 c0,0,1.437-298.643,0-329.564H286.67v47.794h-0.727c14.404-22.49,40.354-55.533,99.44-55.533 c72.085,0,126.116,47.103,126.116,148.333v188.971H401.971V323.912c0-44.301-15.848-74.531-55.497-74.531 c-30.254,0-48.284,20.38-56.202,40.08c-2.897,7.012-3.602,16.861-3.602,26.711v184.047H177.124L177.124,500.219z">
+                            </path>
+                          </g>
+                        </g>
+                      </svg></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="mediaType.type === 'photo-gallery'">
+      <div class="col-lg-9 col-12">
+        <ng-container *ngIf="pageContent?.galleries?.length>0">
+          <div class="page-data">
+            <app-photo-gallery [pageContent]="pageContent" [lang]="lang"></app-photo-gallery>
+          </div>
+        </ng-container>
+        <div class="page-content">
+          <div [innerHtml]="lang === 'ar' ? pageContent?.descriptionAr || '' : pageContent?.description || ''"
+            class=" mb-5 pb-5 lh-1"></div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <!-- Related  -->
+  <div class="related position-relative  pb-0 w-100 medium-section-spacing mt-3 mt-md-2">
+    <h2> {{ lang === "ar" ? mediaType?.otherAr || "" : mediaType?.other }}
+    </h2>
+    <div class="cards-container row">
+      <div class="cards p-2" *ngFor="let item of mediaArr; let i = index" (click)="getItemDetails(item?.slug)"
+        [ngClass]="{
+        'col-lg-6 col-md-12 col-12': mediaType.type === 'photo-gallery' && i === 0, 
+        'col-lg-3 col-md-6 col-12': mediaType.type === 'photo-gallery' && i !== 0,
+        'col-lg-4 col-12': mediaType.type !== 'photo-gallery'
+      }">
+
+        <ng-container *ngIf="mediaType.type==='news'&&!isLangChange">
+          <app-news-card [item]="item" [name]="name"></app-news-card>
+        </ng-container>
+        <ng-container *ngIf="mediaType.type==='institute-blogs'&&!isLangChange">
+          <app-blog-card [item]="item" [name]="name"></app-blog-card>
+        </ng-container>
+        <ng-container *ngIf="mediaType.type==='photo-gallery'&&!isLangChange">
+          <app-gallary-card [item]="item" [name]="name"></app-gallary-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-container *ngIf="isLoading">
+  <app-loading></app-loading>
+</ng-container>
+
+<ng-container *ngIf="!isLoading">
+  <app-loading [type]="'details-cards'"></app-loading>
+</ng-container>

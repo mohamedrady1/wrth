@@ -1,0 +1,42 @@
+<div class="mb-3" [formGroup]="formGroup">
+  <label for="name" class="mx-0 px-0 mb-2"
+    >{{ label }}:<span *ngIf="required" class="text-danger px-1">{{
+      "*"
+    }}</span></label
+  >
+  <!-- <input
+    class="input"
+    type="file"
+    class="d-block w-100"
+    [formControlName]="name"
+    [id]="name"
+    (change)="onImagePicked($event)"
+  /> -->
+  <input
+    type="file"
+    class="d-block w-100"
+    (change)="onFileChange($event)"
+    [id]="name"
+    [accept]="acceptedFiles"
+  />
+  <p class="mt-2" [innerHtml]="acceptedFilesMessage">
+    فقط ملف واحد. <br />
+    الحد الأقصى 32 ميجا. <br />
+    الأنواع المسموح بها : txt, rtf, pdf, doc, docx, odt, ppt, pptx, odp, xls,
+    xlsx, ods.
+  </p>
+  <!-- <p class="my-0" *ngIf="control?.getError('required')">
+    {{ label }} is required
+  </p> -->
+  <!-- <div
+    *ngIf="control?.errors && control?.touched"
+    class="alert alert-danger py-2 mt-2"
+  >
+    <p class="my-0" *ngIf="control?.getError('required')">
+      {{ label }} is required
+    </p>
+    <p class="my-0" *ngIf="control?.getError('minlength')">
+      Min length is 8 characters
+    </p>
+  </div> -->
+</div>

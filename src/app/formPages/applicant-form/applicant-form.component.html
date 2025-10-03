@@ -1,0 +1,97 @@
+<div class="container">
+  <h2 class="my-5 font-weight-semibold">
+    {{ applicantFormLocal.jobApplication[lang] }}
+  </h2>
+
+  <form (ngSubmit)="submitCreateApplicantFrom(createApplicantFrom)"
+        [formGroup]="createApplicantFrom">
+    <h3 class="mb-4 font-weight-semibold">
+      {{ applicantFormLocal.personalInformation[lang] }}
+    </h3>
+    <div class="row">
+      <div class="col-xl-4 col-md-6">
+        <app-input [name]="'FullName'"
+                   [label]="applicantFormLocal.fullName[lang]"
+                   [control]="createApplicantFrom.get('FullName')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-4 col-md-6">
+        <app-input [name]="'IdentityNumber'"
+                   [type]="'number'"
+                   [label]="applicantFormLocal.card_number[lang]"
+                   [control]="createApplicantFrom.get('IdentityNumber')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-4 col-md-6">
+        <app-input [name]="'Specialization'"
+                   [label]="applicantFormLocal.specialization[lang]"
+                   [control]="createApplicantFrom.get('Specialization')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-4 col-md-6">
+        <app-input [name]="'Email'"
+                   [type]="'email'"
+                   [label]="applicantFormLocal.email[lang]"
+                   [control]="createApplicantFrom.get('Email')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-4 col-md-6">
+        <app-input [name]="'PhoneNumber'"
+                   [label]="applicantFormLocal.phoneNumber[lang]"
+                   [control]="createApplicantFrom.get('PhoneNumber')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-4 col-md-6">
+        <app-input [name]="'CountryAndCity'"
+                   [label]="applicantFormLocal.cityAndCountry[lang]"
+                   [control]="createApplicantFrom.get('CountryAndCity')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-4 col-md-6">
+        <app-input [label]="applicantFormLocal.yearsOfExperience[lang]"
+                   [type]="'number'"
+                   [name]="'ExperienceYears'"
+                   [control]="createApplicantFrom.get('ExperienceYears')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-8 col-md-6">
+        <app-input [label]="applicantFormLocal.careerPath[lang]"
+                   [name]="'CareerPath'"
+                   [control]="createApplicantFrom.get('CareerPath')"
+                   [group]="createApplicantFrom"></app-input>
+      </div>
+      <div class="col-xl-4 col-md-6"></div>
+
+      <div class="col-12">
+        <app-textarea [label]="applicantFormLocal.notes[lang]"
+                      [name]="'Notes'"
+                      [control]="createApplicantFrom.get('Notes')"
+                      [group]="createApplicantFrom"
+                      [required]="false"></app-textarea>
+        <h3 class="mb-3 mt-4 font-weight-semibold">
+          {{ applicantFormLocal.requirements[lang] }}
+        </h3>
+        <!--<app-file-input
+    [label]="applicantFormLocal.cv[lang]"
+    [name]="'CVFile'"
+    [control]="createApplicantFrom.get('CVFile')"
+    [formGroup]="createApplicantFrom"
+    [acceptedFiles]="
+      '.txt,.rtf,.pdf,.doc,.docx,.odt,.ppt,.pptx,.odp,.xls,.xlsx,.ods'
+    "
+    [acceptedFilesMessage]="applicantFormLocal.acceptedFiles[lang]"
+  ></app-file-input>-->
+        <input class="d-block w-100" type="file" (change)="onFileChange($event)"  accept=".txt,.rtf,.pdf,.doc,.docx,.odt,.ppt,.pptx,.odp,.xls,.xlsx,.ods"/>
+        <p class="mt-2" [innerHtml]="acceptedFilesMessage">
+          فقط ملف واحد. <br />
+          الحد الأقصى 32 ميجا. <br />
+          الأنواع المسموح بها : txt, rtf, pdf, doc, docx, odt, ppt, pptx, odp, xls,
+          xlsx, ods.
+        </p>
+      </div>
+    </div>
+    <app-button [className]="'mb-5 mt-3'"
+                [label]="applicantFormLocal.submit[lang]"
+                [disabled]="createApplicantFrom.errors"></app-button>
+  </form>
+</div>

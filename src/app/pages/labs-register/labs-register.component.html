@@ -1,0 +1,133 @@
+<div class="container">
+  <h1>{{ lang == 'en' ? lab?.titleEnglish : lab?.titleArabic }}</h1>
+  <p [innerHTML]="lang == 'en' ? lab?.descriptionEnglish : lab?.descriptionArabic"></p>
+
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="mt-5">
+    <div>
+      <label>{{ lang == 'en' ? 'Please choose the appropriate date from the list below:' : 'فضلاَ اختيار التاريخ المناسب
+        من القائمة أدناه:' }}</label>
+      <select formControlName="date" (change)="getTimesBasedOnSelectedDate()">
+        <option value="">{{ lang == 'en' ? '- Select -' : '- اختر -' }}</option>
+        <option [value]="item?.date" *ngFor="let item of lab?.laboratoryDates">
+          {{ item?.date }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'From:' : 'من:' }}</label>
+      <input type="date" formControlName="fromDate" />
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'To:' : 'إلى:' }}</label>
+      <input type="date" formControlName="toDate" />
+    </div>
+
+    <div *ngIf="!!labTimes.length">
+      <label>{{ lang == 'en' ? 'Time:' : 'الوقت:' }}</label>
+      <div *ngFor="let item of labTimes">
+        <input type="radio" formControlName="time" [value]="item?.time" />
+        <span>{{ item?.time }}</span>
+      </div>
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Full Name:' : 'الاسم الثلاثي:' }}</label>
+      <input type="text" formControlName="applicantName" />
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Contact Number:' : 'رقم التواصل:' }}</label>
+      <input type="number" formControlName="phoneNumber" />
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Email:' : 'البريد الإلكتروني:' }}</label>
+      <input type="email" formControlName="email" />
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Social Media Account (if any):' : 'حساب التواصل الاجتماعي إن وجد:' }}</label>
+      <input type="text" formControlName="socialMediaAccount" />
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Do you belong to a government or private agency?' : 'هل تتبع جهة حكومية أو خاصة؟'
+        }}</label>
+      <select formControlName="doYouBelongToPrivateOrGovernmentalAgency">
+        <option value="" selected>{{ lang == 'en' ? '- Select -' : '- اختر -' }}</option>
+        <option value="0">{{ lang == 'en' ? 'No' : 'لا' }}</option>
+        <option value="1">{{ lang == 'en' ? 'Yes' : 'نعم' }}</option>
+      </select>
+    </div>
+
+    <div *ngIf="
+        myForm.get('doYouBelongToPrivateOrGovernmentalAgency').value === '1'
+      ">
+      <input type="text" formControlName="privateOrGovernmentalOrPrivateAgencyNameYouBelongTo"
+        placeholder="{{ lang == 'en' ? 'Please mention it' : 'فضلا اذكرها' }}" />
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Do you have any membership in any charity or cultural organization?' : 'هل لديك أي عضوية
+        في أي جمعية أو مؤسسة ثقافية؟' }}</label>
+      <select formControlName="doYouHaveSubscriptionToAnyCharity">
+        <option value="" selected>{{ lang == 'en' ? '- Select -' : '- اختر -' }}</option>
+        <option value="0">{{ lang == 'en' ? 'No' : 'لا' }}</option>
+        <option value="1">{{ lang == 'en' ? 'Yes' : 'نعم' }}</option>
+      </select>
+    </div>
+
+    <div *ngIf="myForm.get('doYouHaveSubscriptionToAnyCharity').value === '1'">
+      <input type="text" formControlName="charityName"
+        placeholder="{{ lang == 'en' ? 'Please mention it' : 'فضلا اذكرها' }}" />
+    </div>
+
+    <div>
+      <h3 class="mt-5">{{ lang == 'en' ? 'Basic Needs:' : 'الاحتياجات الأساسية:' }}</h3>
+      <label>{{ lang == 'en' ? 'Do you want to book space in the lab for:' : 'ترغب بحجز مساحة في المعمل لغرض:'
+        }}</label>
+      <select formControlName="labSpaceReason">
+        <option value="">{{ lang == 'en' ? '- Select -' : '- اختر -' }}</option>
+        <option value="وجود مشروع قائم فني أو ابداعي ">{{ lang == 'en' ? 'Existing artistic or creative project' : 'وجود
+          مشروع قائم فني أو ابداعي' }}</option>
+        <option value='تجارب مشروع "للهواة" '>{{ lang == 'en' ? 'Project experiments "for amateurs"' : 'تجارب مشروع
+          "للهواة"' }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Project Description:' : 'وصف المشروع:' }}</label>
+      <textarea formControlName="projectDescription"></textarea>
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Upload project file if any:' : 'تحميل ملف المشروع إن وجد:' }}</label>
+      <input type="file" (change)="onFileSelect($event)" formControlName="photoFile" />
+      <small>
+        {{ lang == 'en' ? 'Allowed file types: .txt, .rtf, .pdf, .doc, .docx, .odt, .ppt, .pptx, .odp, .xls, .xlsx' :
+        'الأنواع المسموح بها: .txt, .rtf, .pdf, .doc, .docx, .odt, .ppt, .pptx, .odp, .xls, .xlsx' }}
+      </small>
+    </div>
+
+    <div>
+      <label>{{ lang == 'en' ? 'Is the project belonging to a government or private agency?' : 'هل المشروع تابع لجهة
+        حكومية أو خاصة؟' }}</label>
+      <select formControlName="isProjectBelongToPrivateOrGovernmentalAgency">
+        <option value="" selected>{{ lang == 'en' ? '- Select -' : '- اختر -' }}</option>
+        <option value="0">{{ lang == 'en' ? 'No' : 'لا' }}</option>
+        <option value="1">{{ lang == 'en' ? 'Yes' : 'نعم' }}</option>
+      </select>
+    </div>
+
+    <div *ngIf="
+        myForm.get('isProjectBelongToPrivateOrGovernmentalAgency').value === '1'
+      ">
+      <input type="text" formControlName="privateOrGovernmentalAgencyProjectBelongTo"
+        placeholder="{{ lang == 'en' ? 'Please mention it' : 'فضلا اذكرها' }}" />
+    </div>
+
+    <button type="submit">{{ lang == 'en' ? 'Submit' : 'إضافة' }}</button>
+  </form>
+</div>

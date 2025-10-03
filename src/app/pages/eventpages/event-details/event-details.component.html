@@ -1,0 +1,177 @@
+<div class="row-offcanvas row-offcanvas-left clearfix" *ngIf="menuItems.includes('Events')">
+  <main class="main-content" id="content" role="main">
+    <!--<div id="block-rita-page-title" class="block block-core block-page-title-block">
+      <div class="content">
+        <div class="container">
+          <h1 class="page-title">
+            <span class="field field--name-title field--type-string field--label-hidden">
+              الفعاليات
+            </span>
+          </h1>
+        </div>
+      </div>
+    </div>-->
+
+    <div class="product-details product-banner">
+      <div class="product-image card-body">
+        <img class="img_det" [src]="event?.photoFile" alt="">
+      </div>
+      <!-- Add other product details here -->
+    </div>
+    <div class="events_list ">
+      <div class="container">
+        <div class="events_list_form">
+
+          <div class="row">
+            <div [class.col-md-6]="event?.mapLocationUrl && event?.mapLocationUrl !== 'null' && event?.mapLocationUrl !== 'undefined'">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="event-details-title">
+                    {{ lang === "ar" ? event?.titleAr||'' : event?.titleEn||'' }}
+                  </h2>
+                  <hr />
+                  <div class="details_events_list">
+                    <div class="row d-flex align-items-center   p-2 ">
+                      <div class="">
+                        <img [src]="'assets/images/uit_calender.svg'" alt="">
+                      </div>
+                      <div class="">
+                        {{ lang === "ar" ? "التاريخ" : "Date" }}
+                      </div>
+                      <div class="">
+                        <span>{{ formatDate(event?.startDate) }}</span>
+                      </div>
+                      <div class="">
+                        -
+                      </div>
+                      <div class="">
+                        <span>{{ formatDate(event?.endDate) }}</span>
+                      </div>
+                    </div>
+
+                    <div class="row  d-flex align-items-center  p-2">
+                      <div class="">
+                        <img [src]="'assets/images/clockn-icon.svg'" alt="">
+                      </div>
+                      <div class="">
+                        {{ lang === "ar" ? "الوقت" : "Time" }}
+                      </div>
+                      <div class="">
+                        <span>{{ event?.startTime }}</span>
+                      </div>
+                      <div class="">
+                        -
+                      </div>
+                      <div class="">
+                        <span>{{ event?.endTime }}</span>
+                      </div>
+                    </div>
+
+                    <div class="row  d-flex align-items-center  p-2">
+                      <div class="">
+                        <img [src]="'assets/images/maps-icon.svg'" alt="">
+                      </div>
+                      <div class="">
+                        {{ lang === "ar" ? "المكان":"Place"}}
+                      </div>
+                      <div class="">
+                        <span>
+                          {{ lang === "ar" ? event?.locationAr || "" : event?.locationEn }}
+                        </span>
+                      </div>
+
+                    </div>
+
+                    <div class="row  d-flex align-items-center p-2">
+                      <div class="">
+                        <img [src]="'assets/images/buyer-pay-icon.svg'" alt="">
+                      </div>
+                      <div class="">
+                        {{ lang === "ar" ? "السعر شامل الضريبة" : "The price includes tax" }} </div>
+                      <span>{{ event?.price }}</span>
+                      <div class="">
+                      </div>
+
+                    </div>
+                    <div class="row d-flex align-items-center p-2">
+                      <div class="">
+                        <img [src]="'assets/images/info-circle-icon.svg'" alt="">
+                      </div>
+                      <div class="py-3">
+                        {{ lang === "ar" ? "الوصف" : "Description" }}
+                      </div>
+
+                      <!--<span>{{ event.detailsAr }}</span>
+      <div class="">
+      </div>-->
+                    </div>
+                    <div [innerHtml]="lang === 'ar' ? event?.detailsAr || '' : event?.detailsEn || ''">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-5">
+                <div class="card-body" [ngClass]="{'collapsed': isCollapsed}">
+                  <button class="btn btn-primary w-100" (click)="toggleCollapse()">
+                    {{ lang === "ar" ? "الشروط والاحكام" : "Terms and Conditions" }}
+                  </button>
+                  <div *ngIf="isCollapsed" class="content">
+                    <!-- Your content goes here -->
+                    <!--<span>{{ terms.description }}</span>-->
+                    <div class="my-5"
+                      [innerHtml]="lang === 'ar' ? event?.termsAr|| 'لم يتم اضافه شروط واحكام' : event?.terms || 'No terms and conditions have been added'">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="Btn_item_list Btn_item_list2 "
+                *ngIf="event?.registeredUsers < event?.usersQuota && isFutureDate(event?.endDate) && !event?.isHyperLink">
+                <a class="Btn_register w-100" [routerLink]="'/Events/'+ event?.id +'/Register'">
+                  <img [src]="'assets/images/userregister.svg'" alt="" />
+                  {{ lang === "ar" ? "التسجيل الآن" : "Register now" }}
+                </a>
+                <!--<a class="Btn_calender" (click)="addEventToCalender()">
+      <img [src]="'assets/images/calender.svg'" alt="" />
+      أضف إلى التقويم
+    </a>-->
+              </div>
+              <div class="Btn_item_list Btn_item_list2 w-100" *ngIf="event?.isHyperLink">
+                <a class="Btn_register w-100" (click)="openLinkInNewTab()">
+                  <!--<img [src]="'assets/images/userregister.svموقعg'" alt="" />-->
+                  {{ lang === "ar" ? "احجز الآن" : "Book now" }}
+                </a>
+                <!--<a class="Btn_calender" (click)="addEventToCalender()">
+      <img [src]="'assets/images/calender.svg'" alt="" />
+      أضف إلى التقويم
+    </a>-->
+              </div>
+
+              <div class="card mt-5" *ngIf="eventPrice.length>=1">
+                <div class="row card-body">
+                  {{ lang === "ar" ? "السعر شامل الضريبة" : "The price includes tax" }}
+                  <hr />
+                  <table class="custom-table">
+                    <tr *ngFor="let price of eventPrice;let i = index">
+                      <td>{{price?.name}}</td>
+                      <td>{{price?.price}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="card mt-5" *ngIf="event?.mapLocationUrl && event?.mapLocationUrl !== 'null' && event?.mapLocationUrl !== 'undefined'">
+                <div class="row card-body">
+                  <iframe class="w-100" height="450" frameborder="0" style="border:0" [src]="safeMapUrl"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

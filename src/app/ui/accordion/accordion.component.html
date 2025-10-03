@@ -1,0 +1,9 @@
+<div class="pb-1 pt-4 border-bottom mb-2 border-dark accordion">
+  <div class="d-flex justify-content-between" (click)="handleAccordionClick()">
+    <p class="accordion-heading" [ngClass]="{ active: isOpen }">
+      {{ title }}
+    </p>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+  <p *ngIf="isOpen" [innerHtml]="desc" class="accordion-desc"></p>
+</div>

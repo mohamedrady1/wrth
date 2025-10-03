@@ -1,0 +1,24 @@
+<div class="row-offcanvas row-offcanvas-left clearfix" *ngIf="menuItems.includes('Events')">
+  <main class="main-content" id="content" role="main">
+    <div id="block-rita-page-title" class="block block-core block-page-title-block">
+      <div class="content">
+        <div class="container">
+          <h1 class="page-title"><span class="field field--name-title field--type-string field--label-hidden">
+              {{ lang == "ar" ? "الفعاليات" :"Events" }}
+            </span></h1>
+        </div>
+      </div>
+    </div>
+    <div class="events_list">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 col-12" *ngFor="let event of events">
+            <ng-container>
+              <app-event-item [event]="event"></app-event-item>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

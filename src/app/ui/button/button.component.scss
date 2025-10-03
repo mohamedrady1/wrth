@@ -1,0 +1,25 @@
+button {
+  color: #fff;
+  background-color: #bd9b60;
+  border: 1px solid #a58652;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  padding: 8px 30px;
+  font-weight: 500;
+  font-size: 1.625rem;
+  display: inline-block;
+  border-radius: 0;
+  border-radius: 0;
+  display: inline-block;
+
+  &:hover {
+    color: #bd9b60;
+    background-color: transparent !important;
+    border-color: #bd9b60 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  &:disabled {
+    opacity: 0.5 !important;
+  }
+}

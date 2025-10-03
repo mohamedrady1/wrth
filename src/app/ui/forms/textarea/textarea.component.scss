@@ -1,0 +1,21 @@
+textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  font-size: 18px;
+  font-weight: 500;
+
+  &:focus {
+    border-color: #bd9b60;
+    outline: #bd9b60;
+  }
+}
+label {
+  font-size: 22px;
+  font-weight: 500;
+  & > span {
+    font-size: 16px;
+    font-family: Tahoma, sans-serif !important;
+  }
+}

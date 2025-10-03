@@ -1,0 +1,57 @@
+<div class="container my-5">
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-6 col-12 ">
+            <div class="image-group d-flex flex-column p-0  col-lg-12 col-12">
+                <div class="row gap-2 align-items-center">
+                    <div class=" img-container">
+                        <img src="{{itemsList?.[0]?.icon}}" alt="Image 1">
+                    </div>
+                    <p class="mb-0 col-md-9 col-8">{{lang === 'ar' ? itemsList?.[0]?.descriptionAr || '' :
+                        itemsList?.[0]?.description ||
+                        ''}}
+                    </p>
+                </div>
+                <div class="row gap-2 align-items-center">
+                    <div class="img-container">
+                        <img src="{{itemsList?.[1]?.icon}}" alt="Image 2">
+                    </div>
+                    <p class="mb-0 col-md-9 col-8">{{lang === 'ar' ? itemsList?.[1]?.descriptionAr || '' :
+                        itemsList?.[1]?.description ||
+                        ''}}
+                    </p>
+                </div>
+                <div class="row gap-2 align-items-center">
+                    <div class="img-container">
+                        <img src="{{itemsList?.[2]?.icon}}" alt="Image 3">
+                    </div>
+                    <p class="mb-0 col-md-9 col-8">{{lang === 'ar' ? itemsList?.[2]?.descriptionAr || '' :
+                        itemsList?.[2]?.description ||
+                        ''}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="image-group d-flex flex-column">
+                <div class="row align-items-center justify-content-lg-center gap-2">
+                    <div class="img-container">
+                        <img src="{{itemsList?.[3]?.icon}}" alt="Image 4">
+                    </div>
+                    <p class="mb-0 col-md-9 col-8">{{lang === 'ar' ? itemsList?.[3]?.descriptionAr || '' :
+                        itemsList?.[3]?.description ||
+                        ''}}
+                    </p>
+                </div>
+                <div class="row align-items-center justify-content-lg-center gap-1">
+                    <div class="img-container">
+                        <img src="{{itemsList?.[4]?.icon}}" alt="Image 5">
+                    </div>
+                    <p class="mb-0 col-md-9 col-8">{{lang === 'ar' ? itemsList?.[4]?.descriptionAr || '' :
+                        itemsList?.[4]?.description ||
+                        ''}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<a [routerLink]="link" class="pb-4 card">
+  <div class="card-img">
+    <img [src]="imageUrl" [alt]="title" class="h-100 w-100" />
+  </div>
+  <h2 class="h3 my-3 font-weight-semibold">
+    {{ title }}
+  </h2>
+  <p
+    class="text-dark"
+    [innerHtml]="
+      removeHtmlTags(description)?.split(' ')?.slice(0, 15)?.join(' ')
+    "
+  ></p>
+</a>

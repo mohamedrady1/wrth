@@ -1,0 +1,65 @@
+.loader {
+  display: inline-block;
+  transform-origin: center;
+  animation: rotate 0.2s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.disabled {
+  background: #424446 !important;
+  cursor: not-allowed;
+}
+
+img.dynamic-validation-icon {
+  position: static !important;
+}
+
+.image-preview {
+  margin: 0 auto;
+  border: 2px solid #f2e8d6;
+  border-radius: 4px;
+  padding: 15px 5px;
+  width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.close-button {
+  position: absolute;
+  top: -14px;
+  border-radius: 50%;
+  right: 40;
+  left: 40;
+  z-index: 9999;
+  height: 30px;
+  width: 30px;
+  background: white;
+  border: 2px solid #f2e8d6;
+  font-size: 20px;
+  color: #ce9c40;
+  cursor: pointer;
+}
+
+.close-button:focus {
+  outline: none;
+}
+
+.close-button:hover {
+  background: #ce9c40;
+  color: white;
+}

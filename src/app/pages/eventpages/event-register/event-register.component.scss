@@ -1,0 +1,32 @@
+.loader {
+  display: inline-block;
+  transform-origin: center;
+  animation: rotate 0.2s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.disabled {
+  background: #424446 !important;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red; /* Set the text color to red */
+  font-size: 24px; /* Customize the font size */
+  margin-top: 5px; /* Add some space above the error message */
+}
+
+hr {
+  width: 100%;
+  margin-left: unset;
+  margin-right: unset;
+}

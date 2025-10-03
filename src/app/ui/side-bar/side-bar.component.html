@@ -1,0 +1,32 @@
+<div class="sidebar">
+  <ul class="list-group d-flex" [ngStyle]="{'margin': lang !== 'ar' ? ' 0 0 50px -40px' : '0 0 50px 0 '}">
+    <li class="list-group-item position-relative d-block" [ngClass]="{'text-left':lang==='ar'}"
+      *ngFor="let item of heading">
+      <a [routerLink]="['/media/', item?.slug]" [ngStyle]="{'font-weight': item.type === Type.type ? '600' : '500'}"
+        [attr.aria-label]="lang === 'ar' ? item?.titleAr || '' : item?.title || ''">
+        {{ lang === "ar" ? item?.titleAr || "" : item?.title || "" }}
+
+      </a>
+    </li>
+  </ul>
+  <ng-container *ngIf="Type.type==='institute-blogs'">
+    <div class="groups" [ngClass]="{'active': lang === 'ar'}">
+      <h2>{{lang === 'ar' ? "المجموعات" :"Groups" }}</h2>
+      <ul class="p-0">
+        <li class="position-relative list-unstyled" *ngFor="let group of groups;let i = index">
+          <a [routerLink]="['/taxonomy/term/'+group?.id]" [class.active]="i === articleType"
+            [attr.aria-label]="lang === 'ar' ? group?.ar || '' : group?.en || ''">
+            {{ lang === "ar" ? group?.ar || "" : group?.en || "" }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="tags">
+      <h2>{{lang === 'ar' ? "الأوسمة" :"Tags" }}</h2>
+      <button id="TagBtn" name="tag" aria-label="Traditional Arts" [routerLink]="['/taxonomy/term/7']">{{ lang === "ar"
+        ? 'الفنون التقليدية' :'Traditional
+        Arts'}}</button>
+
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,88 @@
+<div class="page-path d-flex flex-wrap align-items-center">
+  <a [routerLink]="['']">
+    {{ lang == "ar" ? "الرئيسية" : 'Home'}}
+  </a>
+  <svg viewBox="0 0 32 32" [style.transform]="lang === 'ar' ? 'rotate(180deg)' : 'none'" width="30px" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+    <g id="SVGRepo_iconCarrier">
+      <g id="icomoon-ignore"> </g>
+      <path d="M19.159 16.767l0.754-0.754-6.035-6.035-0.754 0.754 5.281 5.281-5.256 5.256 0.754 0.754 3.013-3.013z"
+        fill="#000000"> </path>
+    </g>
+  </svg>
+  <a [routerLink]="['/media','news']">
+    {{ lang == "ar" ? "المركز الاعلامي" : 'Media Center'}}
+  </a>
+</div>
+
+<h1 class="page-title">{{ lang == "ar" ? heading.titleAr : heading.title }}</h1>
+<!-- Photo-Gallery-list  -->
+<ng-container *ngIf="!isLoading && heading?.type=='photo-gallery'&& !isLangChange">
+  <app-photo-gallary-list [media]="media" [name]="name"></app-photo-gallary-list>
+</ng-container>
+<div class="row" *ngIf="!isLoading">
+
+  <div class="col-lg-4 col-md-6" *ngFor="let item of media">
+    <!-- <app-card
+      [title]="lang === 'ar' ? item?.titleAr || '' : item?.title || ''"
+      [description]="
+        lang === 'ar' ? item?.descriptionAr || '' : item?.description || ''
+      "
+      [imageUrl]="item.imageUrl"
+      [link]="['/media/', name, item.slug]"
+    ></app-card> -->
+
+    <!-- Blog-list  -->
+    <ng-container *ngIf="heading?.slug=='institute-blogs'&& !isLangChange">
+      <app-blog-card [item]="item" [name]="name"></app-blog-card>
+    </ng-container>
+
+    <!-- news-list  -->
+    <ng-container *ngIf="heading?.slug=='news' && !isLangChange">
+      <app-news-card [item]="item" [name]="name" class="cards"></app-news-card>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div class="pagination mb-3" *ngIf="!isLoading">
+  <ng-container *ngIf="totalPages > 1">
+    <ng-container *ngIf="page!=1">
+      <button [disabled]="page === 1" (click)="goToPage(1)">««</button>
+      <button [disabled]="page === 1" (click)="goToPage(page - 1)">«</button></ng-container>
+    <ng-container *ngFor="let p of pages">
+      <button [class.active]="p === page" (click)="goToPage(p)">
+        {{ p }}
+      </button>
+    </ng-container>
+    <ng-container *ngIf="page!=totalPages">
+
+      <button [disabled]="page === totalPages" (click)="goToPage(page + 1)">
+        »
+      </button>
+      <button [disabled]="page === totalPages" (click)="goToPage(totalPages)">
+        »»
+      </button>
+    </ng-container>
+  </ng-container>
+</div>
+
+
+<!-- isloading  -->
+
+<!-- Blogs-loading -->
+<ng-container *ngIf="isLoading && heading?.type=='institute-blogs'">
+  <app-loading [type]="'blog-cards'"></app-loading>
+</ng-container>
+
+<!-- News-loading  -->
+<ng-container *ngIf="isLoading&& heading?.type=='news'">
+  <app-loading [type]="'news-cards'"></app-loading>
+</ng-container>
+
+<!-- Photo-gallery-loading -->
+<ng-container *ngIf="isLoading&& heading?.type=='photo-gallery'">
+  <app-loading [type]="'photo-gallery'"></app-loading>
+</ng-container>

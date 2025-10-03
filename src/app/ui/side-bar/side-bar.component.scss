@@ -1,0 +1,102 @@
+.sidebar {
+
+    .list-group {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        font-size: 20px;
+        margin-bottom: 50px;
+
+        .list-group-item {
+
+            padding: 0.75rem 1.25rem;
+            border: 0;
+            background-color: #f2f3f3;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(133, 117, 78, 0.4);
+            }
+        }
+    }
+
+    .groups {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f2f3f3;
+
+        h2 {
+            font-size: 2.375rem;
+            color: rgba(16, 24, 32, 0.8);
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        ul {
+            li {
+                a.active{
+                    color: #025157;
+                }
+                padding: 5px 0;
+                font-size: 1.071em;
+                padding: 0 0 0 40px;
+
+                &::before {
+                    content: "";
+                    width: 13px;
+                    height: 13px;
+                    border-radius: 50%;
+                    background-color: #025157;
+                    position: absolute;
+                    top: 13px;
+                    left: 0px;
+                }
+
+                a {
+                    font-size: 1.5rem;
+                    font-weight: 400 !important;
+                }
+            }
+        }
+
+        &.active {
+            ul {
+                li {
+                    padding: 0 40px 0 0;
+
+                    &::before {
+                        left: auto;
+                        right: 0;
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    .tags {
+        padding-bottom: 40px;
+
+        h2 {
+            font-size: 2.375rem;
+            color: rgba(16, 24, 32, 0.8);
+            margin: 20px 0;
+            font-weight: 600;
+        }
+    }
+
+    button {
+        background: #f5f8f8;
+        padding: 10px;
+        color: #025157;
+        border-radius: 7px;
+        border: 0;
+    }
+
+}
+
+@media (max-width:800px) {
+
+    .groups,
+    .tags {
+        display: none;
+    }
+}

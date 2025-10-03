@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="search-container" [ngClass]="{ 'text-right' : lang==='en' }">
+    <h1 class="title">{{ lang === 'ar' ? 'البحث' : 'Search' }}</h1>
+    <p class="subtitle">{{ lang === 'ar' ? 'ضع كلمات البحث' : 'Enter search terms' }}</p>
+    <input type="text" class="search-input" [placeholder]="lang === 'ar' ? 'ابحث هنا...' : 'Search here...'"
+      [(ngModel)]="query" />
+    <button class="search-button" [disabled]="!query" (click)="search()">
+      {{ lang === 'ar' ? 'تطبيق' : 'Apply' }}
+    </button>
+
+    <ul class="search-options" *ngIf="!searchResults.length">
+      <li>
+        <a routerLink="/apply-job">{{ lang === 'ar' ? 'طلب للحصول على وظيفة' : 'Apply for a Job' }}</a>
+      </li>
+      <li>
+        <a routerLink="/jobs">{{ lang === 'ar' ? 'الوظائف' : 'Jobs' }}</a>
+      </li>
+    </ul>
+
+    <ul class="search-options" *ngIf="searchResults.length">
+      <li *ngFor="let item of searchResults">
+        <a [routerLink]="item.url">
+          <h3 [innerHTML]="
+              lang == 'ar'
+                ? removeHtmlTags(item.titleAr)
+                : item.titleEn || item.title
+            "></h3>
+          <p [innerHTML]="
+              lang == 'ar'
+                ? removeHtmlTags(item.descriptionAr)
+                : item.description
+            "></p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button [disabled]="page === 1" (click)="goToPage(1)">««</button>
+    <button [disabled]="page === 1" (click)="goToPage(page - 1)">«</button>
+
+    <ng-container *ngFor="let p of pages">
+      <button [class.active]="p === page" (click)="goToPage(p)">
+        {{ p }}
+      </button>
+    </ng-container>
+
+    <button [disabled]="page === totalPages" (click)="goToPage(page + 1)">
+      »
+    </button>
+    <button [disabled]="page === totalPages" (click)="goToPage(totalPages)">
+      »»
+    </button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="tabs my-5">
+    <div class="tab" [class.active]="selectedSlug === item.slug" *ngFor="let item of itemsList"
+        (click)="selectItem(item.slug)">
+        <div class="img-container d-flex align-items-center">
+            <img [src]="item.icon" [alt]="item.title" onerror="this.src='assets/images/defaults/default-image.jpg'" />
+        </div>
+        <h5 class="text-center" [innerHtml]="lang === 'ar' ?  item.titleAr|| '' :item.title|| ''"></h5>
+    </div>
+</div>
+<div class="description" *ngIf="selectedSlug">
+    <ng-container *ngFor="let item of itemsList">
+        <ng-container *ngIf="item.slug === selectedSlug">
+            <div [innerHtml]="
+            lang === 'ar'
+              ? item?.contentAr || ''
+              : item?.content || ''
+          " class="my-2 pb-5"></div>
+        </ng-container>
+    </ng-container>
+</div>

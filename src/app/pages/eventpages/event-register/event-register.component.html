@@ -1,0 +1,411 @@
+<div class="row-offcanvas row-offcanvas-left clearfix" *ngIf="menuItems.includes('Events')">
+  <main class="main-content" id="content" role="main">
+    <div id="block-rita-page-title" class="block block-core block-page-title-block">
+      <div class="content">
+        <div class="container">
+          <h1 class="page-title">
+            <span class="field field--name-title field--type-string field--label-hidden">
+              {{ lang == 'en' ? 'Register for the Event' : 'التسجيل فى الفعالية' }}
+            </span>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="events_list">
+      <div class="container">
+        <div class="events_list_form">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="img_form">
+                <img class="img_det" [src]="event?.photoFile" alt="" />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h2 class="event-details-title">{{ event?.titleAr }}</h2>
+              <h2 class="h2_title">
+                {{ lang == 'en' ? 'Basic Information' : 'البيانات الأساسية' }}
+              </h2>
+              <form class="form_input" (ngSubmit)="registerEvent()" [formGroup]="registerEventForm">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('firstName') == 1"
+                        [class.inputUnDoneIcon]="fcError('firstName') == 2" [src]="'assets/images/circum_user.svg'"
+                        alt="" />
+                      <input [class.inputDone]="fcError('firstName') == 1"
+                        [class.inputUnDone]="fcError('firstName') == 2" type="text"
+                        placeholder="{{ lang == 'en' ? 'First Name' : 'الاسم الأول' }}" minlength="3"
+                        formControlName="firstName" />
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('firstName') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('firstName') == 2" alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('secondName') == 1"
+                        [class.inputUnDoneIcon]="fcError('secondName') == 2" [src]="'assets/images/circum_user.svg'"
+                        alt="" />
+                      <input [class.inputDone]="fcError('secondName') == 1"
+                        [class.inputUnDone]="fcError('secondName') == 2" type="text"
+                        placeholder="{{ lang == 'en' ? 'Middle Name' : 'الاسم الأوسط' }}" minlength="3"
+                        formControlName="secondName" />
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('secondName') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('secondName') == 2" alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('lastName') == 1"
+                        [class.inputUnDoneIcon]="fcError('lastName') == 2" [src]="'assets/images/circum_user.svg'"
+                        alt="" />
+                      <input [class.inputDone]="fcError('lastName') == 1" [class.inputUnDone]="fcError('lastName') == 2"
+                        type="text" placeholder="{{ lang == 'en' ? 'Last Name' : 'الاسم الأخير' }}" minlength="3"
+                        formControlName="lastName" />
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('lastName') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('lastName') == 2" alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('employer') == 1"
+                        [class.inputUnDoneIcon]="fcError('employer') == 2" [src]="'assets/images/circum_user.svg'"
+                        alt="" />
+                      <input [class.inputDone]="fcError('employer') == 1" [class.inputUnDone]="fcError('employer') == 2"
+                        type="text" placeholder="{{ lang == 'en' ? 'Employer' : 'جهة العمل' }}" minlength="3"
+                        formControlName="employer" />
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('employer') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('employer') == 2" alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('userType') == 1"
+                        [class.inputUnDoneIcon]="fcError('userType') == 2"
+                        [src]="'assets/images/fluent_people-20-regular.svg'" alt="" />
+                      <select [class.inputDone]="fcError('userType') == 1"
+                        [class.inputUnDone]="fcError('userType') == 2" formControlName="userType"
+                        [(ngModel)]="selectedUserType">
+                        <option *ngFor="let option of gender" selected [value]="option.number">
+                          {{ option.gender }}
+                        </option>
+                      </select>
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('userType') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('userType') == 2" alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('age') == 1" [class.inputUnDoneIcon]="fcError('age') == 2"
+                        [src]="'assets/images/fluent_people-20-regular.svg'" alt="" />
+                      <select (change)="changeSelectedAvailableAge($event)" [class.inputDone]="fcError('age') == 1"
+                        [class.inputUnDone]="fcError('age') == 2" formControlName="age" [(ngModel)]="selectedAge.title">
+                        <option *ngFor="let option of availableAge" selected [value]="option.title">
+                          {{ option.title }}
+                        </option>
+                      </select>
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'" *ngIf="fcError('age') == 1"
+                      alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'" *ngIf="fcError('age') == 2"
+                      alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('nationalityId') == 1"
+                        [class.inputUnDoneIcon]="fcError('nationalityId') == 2"
+                        [src]="'assets/images/fluent_people-20-regular.svg'" alt="" />
+                      <select (change)="changeselectedNationlity($event)"
+                        [class.inputDone]="fcError('nationalityId') == 1"
+                        [class.inputUnDone]="fcError('nationalityId') == 2" formControlName="nationalityId"
+                        [(ngModel)]="selectedNationlity.id">
+                        <option *ngFor="let option of nationalityItem" selected [value]="option.id">
+                          {{ option.nameAr }}
+                        </option>
+                      </select>
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('nationalityId') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('nationalityId') == 2" alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('academicDegreeId') == 1" [class.inputUnDoneIcon]="
+                          fcError('academicDegreeId') == 2
+                        " [src]="'assets/images/fluent_people-20-regular.svg'" alt="" />
+                      <select (change)="changeSelectedAcademicDegree($event)"
+                        [class.inputDone]="fcError('academicDegreeId') == 1"
+                        [class.inputUnDone]="fcError('academicDegreeId') == 2" formControlName="academicDegreeId"
+                        [(ngModel)]="selectedAcademicDegree.id">
+                        <option *ngFor="let option of academicDegreesItem" selected [value]="option.id">
+                          {{ option.nameAr }}
+                        </option>
+                      </select>
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('academicDegreeId') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('academicDegreeId') == 2" alt="" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="P_realt">
+                      <img [class.inputDoneIcon]="fcError('dateOfAttendance') == 1" [class.inputUnDoneIcon]="
+                          fcError('dateOfAttendance') == 2
+                        " [src]="'assets/images/fluent_people-20-regular.svg'" alt="" />
+                      <select (change)="changeSelectedAvailableDate($event)"
+                        [class.inputDone]="fcError('dateOfAttendance') == 1"
+                        [class.inputUnDone]="fcError('dateOfAttendance') == 2" formControlName="dateOfAttendance"
+                        [(ngModel)]="selectedDate.title">
+                        <option *ngFor="let option of availableDates" selected [value]="option.title">
+                          {{ option.title }}
+                        </option>
+                      </select>
+                    </div>
+                    <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                      *ngIf="fcError('dateOfAttendance') == 1" alt="" />
+                    <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                      *ngIf="fcError('dateOfAttendance') == 2" alt="" />
+                  </div>
+
+                  <h2 class="h2_title">
+                    {{ lang == 'en' ? 'Contact Information' : 'بيانات التواصل' }}
+                  </h2>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="P_realt">
+                        <img [class.inputDoneIcon]="fcError('phone1') == 1"
+                          [class.inputUnDoneIcon]="fcError('phone1') == 2" [src]="'assets/images/ph_phone-thin.svg'"
+                          alt="" />
+                        <input [class.inputDone]="fcError('phone1') == 1" [class.inputUnDone]="fcError('phone1') == 2"
+                          type="text" appPhoneMask maxlength="12"
+                          placeholder="{{ lang == 'en' ? 'Mobile Number' : 'رقم الجوال' }}" formControlName="phone1" />
+                      </div>
+                      <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                        *ngIf="fcError('phone1') == 1" alt="" />
+                      <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                        *ngIf="fcError('phone1') == 2" alt="" />
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="P_realt">
+                        <img [class.inputDoneIcon]="fcError('email') == 1"
+                          [class.inputUnDoneIcon]="fcError('email') == 2" [src]="'assets/images/arcticons_mail.svg'"
+                          alt="" />
+                        <input [class.inputDone]="fcError('email') == 1" [class.inputUnDone]="fcError('email') == 2"
+                          type="email" placeholder="{{ lang == 'en' ? 'Email' : 'البريد الإلكتروني' }}"
+                          formControlName="email" />
+                      </div>
+                      <img class="dynamic-validation-icon" [src]="'assets/images/done.svg'"
+                        *ngIf="fcError('email') == 1" alt="" />
+                      <img class="dynamic-validation-icon" [src]="'assets/images/undone.svg'"
+                        *ngIf="fcError('email') == 2" alt="" />
+                    </div>
+                    <div class="row" *ngIf="!!event?.workshops?.length">
+                      <div class="col-md-6">
+                        <h3 class="h2_title">
+                          {{ lang == "en" ? "Would you like to attend educational workshops on traditional arts?" : "هل
+                          ترغب في حضور ورش عمل تثقيفية في الفنون التقليدية؟" }}
+                        </h3>
+                      </div>
+
+                      <div class="col-md-2">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <h2 class="h2_title">
+                              {{ lang == "en" ? "yes" : "نعم" }}
+
+                            </h2>
+                          </div>
+                          <div class="col-md-6">
+                            <input (change)="workShopType($event)" value="1" [checked]="flagWorkShop == 1"
+                              type="radio" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-2">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <h2 class="h2_title">
+                              {{ lang == "en" ? "no" : "لا" }}
+
+                            </h2>
+                          </div>
+                          <div class="col-md-6">
+                            <input (change)="workShopType($event)" value="0" [checked]="flagWorkShop == 0"
+                              type="radio" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="!!event?.workshops?.length">
+                      <div class="row card1" *ngIf="flagWorkShop == 1">
+                        <div class="row" *ngFor="let option of workshopsItem">
+                          <div class="col-md-6">
+                            <div class="col-md-1">
+                              <input type="checkbox" [checked]="option?.ckecked"
+                                (change)="changeWorkShop($event, option)" />
+                            </div>
+                            <div class="col-md-11">
+                              <div class="row cards">
+                                <div class="col-md-12">
+                                  <h1 class="h2_title">
+                                    {{ option?.startDate }} -
+                                    {{ option?.endDate }}
+                                  </h1>
+                                  <h1 class="h2_title">
+                                    {{ option?.titleAr }}
+                                  </h1>
+                                  <h1 [innerHTML]="option?.detailsAr" class="h2_title">
+                                    y
+                                  </h1>
+                                  <!--<h1 class="h2_title"> {{ option.titleAr }} </h1>
+                                  <h1 class="h2_title">تفاصيل ورشة العمل :{{ option.detailsAr }} </h1>
+                                  <h1 class="h2_title">المكان :{{ option.locationAr }} </h1>
+                                  <h1 class="h2_title">تاريخ البداية :{{ option.startDate }} </h1>
+                                  <h1 class="h2_title">تاريخ النهاية :{{ option.endDate }} </h1>-->
+                                </div>
+                                <!--<div class="col-md-6">
+                                  <h1 class="h2_title">تاريخ البداية :{{ option.startDate }} </h1>
+                                  <h1 class="h2_title">تاريخ النهاية :{{ option.endDate }} </h1>
+                                </div>-->
+                              </div>
+                            </div>
+                          </div>
+
+                          <hr />
+                          <!--<div class="col-md-1">
+                            <input type="checkbox" [checked]="option.ckecked" (change)="option.ckecked =$event.target.$checked" />
+                          </div>-->
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row" *ngIf="!!event?.discussions?.length">
+                      <div class="col-md-6">
+                        <h3 class="h2_title">
+                          {{ lang == "en" ? "Would you like to attend enriching dialogue sessions?" : "هل ترغب في حضور
+                          جلسات حوارية مثرية؟" }}
+                        </h3>
+                      </div>
+
+                      <div class="col-md-2">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <h2 class="h2_title">
+                              {{ lang == "en" ? "yes" : "نعم" }}
+
+                            </h2>
+                          </div>
+                          <div class="col-md-6">
+                            <input (change)="discussionSessionType($event)" value="1"
+                              [checked]="flagDiscussionSession == 1" type="radio" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-2">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <h2 class="h2_title">{{ lang == "en" ? "no" : "لا" }}
+                            </h2>
+                          </div>
+                          <div class="col-md-6">
+                            <input (change)="discussionSessionType($event)" value="0"
+                              [checked]="flagDiscussionSession == 0" type="radio" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" *ngIf="!!event?.discussions?.length">
+                      <div class="row card1" *ngIf="flagDiscussionSession == 1">
+                        <div class="row" *ngFor="let option of discussionSessionItem">
+                          <div class="col-md-6">
+                            <div class="col-md-1">
+                              <input type="checkbox" [checked]="option?.ckecked" (change)="
+                                  changeDiscussionSession($event, option)
+                                " />
+                            </div>
+                            <div class="col-md-11">
+                              <div class="row cards">
+                                <div class="col-md-12">
+                                  <h1 class="h2_title">
+                                    {{ option?.startDate }} -
+                                    {{ option?.endDate }}
+                                  </h1>
+                                  <h1 class="h2_title">
+                                    {{ option?.titleAr }}
+                                  </h1>
+                                  <h1 [innerHTML]="option?.detailsAr" class="h2_title"></h1>
+                                  <!--<h1 class="h2_title"> {{ option.titleAr }} </h1>
+                                <h1 class="h2_title">تفاصيل ورشة العمل :{{ option.detailsAr }} </h1>
+                                <h1 class="h2_title">المكان :{{ option.locationAr }} </h1>
+                                <h1 class="h2_title">تاريخ البداية :{{ option.startDate }} </h1>
+                                <h1 class="h2_title">تاريخ النهاية :{{ option.endDate }} </h1>-->
+                                </div>
+                                <!--<div class="col-md-6">
+                                <h1 class="h2_title">تاريخ البداية :{{ option.startDate }} </h1>
+                                <h1 class="h2_title">تاريخ النهاية :{{ option.endDate }} </h1>
+                              </div>-->
+                              </div>
+                            </div>
+                          </div>
+
+                          <hr />
+                          <!--<div class="col-md-1">
+                          <input type="checkbox" [checked]="option.ckecked" (change)="option.ckecked =$event.target.$checked" />
+                        </div>-->
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <button class="btn_form" type="submit" [disabled]="!registerEventForm.valid"
+                        [class.disabled]="!registerEventForm.valid">
+                        {{ lang == "en" ? "Register Now" : "تسجيل الآن" }}
+                        <span *ngIf="showRegisterBtnLoader" class="loader">
+                          <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px"
+                            viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                            <path opacity="0.2" fill="#000"
+                              d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
+                            <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+    C22.32,8.481,24.301,9.057,26.013,10.047z">
+                              <animateTransform attributeType="xml" attributeName="transform" type="rotate"
+                                from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite" />
+                            </path>
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,13 @@
+.header {
+  z-index: 999;
+}
+@media (max-width:1200px) {
+  .navigation-bar{
+    display: none !important;
+  }
+}
+img{
+  &.white-logo{
+      filter: invert(100%);
+  }
+}

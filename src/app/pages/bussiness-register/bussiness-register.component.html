@@ -1,0 +1,200 @@
+<div class="container">
+  <h1>نموذج تسجيل حاضنة أعمال الفنون التقليديّة</h1>
+  <p>المعلومات الشخصية:</p>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="mt-5">
+    <div>
+      <label>الاسم الأول:</label>
+      <input type="text" formControlName="firstName" />
+    </div>
+    <div>
+      <label>اسم الأب:</label>
+      <input type="text" formControlName="secondName" />
+    </div>
+    <div>
+      <label>اسم العائلة:</label>
+      <input type="text" formControlName="familyName" />
+    </div>
+
+    <div>
+      <label>تاريخ الميلاد:</label>
+      <input type="date" formControlName="birthDate" />
+    </div>
+
+    <div>
+      <label>رقم الهوية:</label>
+      <input type="text" formControlName="idNumber" />
+    </div>
+
+    <div>
+      <label>الجنس:</label>
+      <select formControlName="gender">
+        <option value="" selected>- اختر -</option>
+        <option value="0">ذكر</option>
+        <option value="1">مؤنث</option>
+      </select>
+    </div>
+    <div>
+      <label>المنطقة:</label>
+      <select formControlName="district">
+        <option value="" selected>- اختر -</option>
+        <option value="0">الوسطى</option>
+        <option value="1">الشرقية</option>
+        <option value="2">الغربية</option>
+        <option value="3">الجنوبية</option>
+        <option value="4">الشمالية</option>
+      </select>
+    </div>
+
+    <div>
+      <label>المدينة:</label>
+      <input type="text" formControlName="city" />
+    </div>
+
+    <div>
+      <label>البريد الإلكتروني:</label>
+      <input type="email" formControlName="email" />
+    </div>
+    <div>
+      <label>رقم الجوال:</label>
+      <input type="number" formControlName="phoneNumber" />
+    </div>
+    <div>
+      <label>المسمى الوظيفي:</label>
+      <input type="text" formControlName="workTitle" />
+    </div>
+
+    <p>معلومات الفكرة الريادية والمنتج</p>
+    <p>ما هي فكرة مشروعك؟</p>
+
+    <div>
+      <label>(شرح موجز)</label>
+      <input type="text" formControlName="projectIdea" />
+    </div>
+
+    <div>
+      <label>هل تتبع جهة حكومية أو خاصة؟</label>
+      <select formControlName="traditionalArt">
+        <option value="" selected>- اختر -</option>
+        <option value="0">الفنون التقليدية بالخوص</option>
+        <option value="1">فن القط العسيري</option>
+        <option value="2">المجوهرات التقليدية</option>
+        <option value="3">التطريز التقليدي</option>
+        <option value="4">الخط الديواني</option>
+        <option value="5">فنون الجص التقليدية</option>
+        <option value="6">الفنون التقليدية بالمعادن</option>
+        <option value="7">الأزياء التقليدية "المقطع النجدي"</option>
+        <option value="8">الفنون التقليدية بالأحجار</option>
+        <option value="9">الفنون التقليدية بالفخار</option>
+        <option value="10">تقطير الورد الطائفي</option>
+        <option value="11">ترميم المنسوجات التقليدية</option>
+        <option value="12">البشت الحساوي</option>
+        <option value="13">البناء بالطين</option>
+        <option value="14">النسيج التقليدي/السدو</option>
+        <option value="15">فنون الأبواب الخشبية التقليدية</option>
+        <option value="16">التجليد التقليدي للكتاب</option>
+        <option value="17">أخرى</option>
+      </select>
+    </div>
+
+    <div>
+      <label>هل تملك فريقاً؟</label>
+      <select formControlName="doYouHaveTeam">
+        <option value="" selected>- اختر -</option>
+        <option value="0">لا</option>
+        <option value="1">نعم</option>
+      </select>
+    </div>
+
+    <p>ما هي الميزة التنافسية في مشروعك؟</p>
+
+    <div>
+      <label
+        >(الميزة التنافسية هي ما يركز عليه المشروع لتقديم منتج أو خدمة مختلفة عن
+        المنافسين)</label
+      >
+      <textarea formControlName="yourAdvantageOverOtherApplicants"></textarea>
+    </div>
+
+    <div>
+      <label>هل تم تطوير نموذج أولي لمنتجك؟</label>
+      <select formControlName="haveYourProductDeveloped">
+        <option value="" selected>- اختر -</option>
+        <option value="0">لا</option>
+        <option value="1">نعم</option>
+      </select>
+    </div>
+    <div>
+      <label
+        >هل لديك التفرّغ التام للالتزام بالمشاركة في مرحلة برنامج
+        الحاضنة؟</label
+      >
+      <select
+        formControlName="doYouHavefullTimeToParticipateInTheIncubatorProgram"
+      >
+        <option value="" selected>- اختر -</option>
+        <option value="0">لا</option>
+        <option value="1">نعم</option>
+      </select>
+    </div>
+    <div>
+      <label>هل سبق والتحقت ببرنامج مسرعة أعمال أو حاضنة أعمال؟</label>
+      <select formControlName="haveYouJoinedAcceleratorOrIncubatorProgram">
+        <option value="" selected>- اختر -</option>
+        <option value="0">لا</option>
+        <option value="1">نعم</option>
+      </select>
+    </div>
+    <div>
+      <label
+        >في حال إجابتك كانت "بنعم" على السؤال السابق ماهو اسم المسرعة/ الحاضنة
+        التي سبق والتحقت بها؟</label
+      >
+      <input type="text" formControlName="acceleratorOrIncubatorName" />
+    </div>
+    <div>
+      <label
+        >هل سبق لك أخذ دورة تعليمية أو تدريبية في المعهد الملكي للفنون
+        التقليديّة؟</label
+      >
+      <select formControlName="doYoHaveTakenTrainingCourseInTheInstitute">
+        <option value="" selected>- اختر -</option>
+        <option value="0">لا</option>
+        <option value="1">نعم</option>
+      </select>
+    </div>
+    <div>
+      <label
+        >في حال إجابتك كانت "بنعم" على السؤال السابق، ما هي الدورة التعليمية او
+        التدريبية التي تم حضورها في المعهد الملكي للفنون التقليديّة؟</label
+      >
+      <input type="text" formControlName="trainingCourseName" />
+    </div>
+    <p>معلومات إضافية</p>
+    <div>
+      <label>الموقع الإلكتروني الخاص بك إن وجد</label>
+      <input type="text" formControlName="yourWebsite" />
+    </div>
+    <div>
+      <label>حساب تويتر الخاص بمشروعك</label>
+      <input type="text" formControlName="yourProjectTwitter" />
+    </div>
+    <div>
+      <label>حساب الانستقرام الخاص بمشروعك إن وجد</label>
+      <input type="text" formControlName="yourProjectInstagram" />
+    </div>
+
+    <div>
+      <label>رفع ملف الأعمال</label>
+      <input
+        type="file"
+        (change)="onFileSelect($event)"
+        formControlName="photoFile"
+      />
+      <small>
+        فقط ملف واحد. الحد الأقصى 32 ميجا. الأنواع المسموح بها : txt, rtf, pdf,
+        doc, docx, odt, ppt, pptx, odp, xls, xlsx, ods.
+      </small>
+    </div>
+    <button type="submit">إضافة</button>
+  </form>
+</div>

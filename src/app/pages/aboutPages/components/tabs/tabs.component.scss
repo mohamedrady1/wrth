@@ -1,0 +1,137 @@
+h2 {
+    font-size: 3.2rem;
+    position: relative;
+    color: #e04403;
+
+    &::after {
+        content: '';
+        width: 10%;
+        height: 1px;
+        background-color: #e04403;
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 20px;
+        transition: width 0.3s ease-in-out;
+    }
+}
+
+.tabs {
+    padding-top: 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    .tab {
+        position: relative;
+        padding: 10px 30px;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+        color: gray;
+
+        &:hover {
+            box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+            color: black;
+
+            img {
+                filter: invert(0);
+
+            }
+        }
+
+        &:hover::after {
+            content: '';
+            width: 50%;
+            height: 5px;
+            background-color: rgba(128, 128, 128, 0.198);
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        &.active {
+            color: black;
+
+            &::after {
+                content: '';
+                width: 50%;
+                height: 5px;
+                background-color: #e04403;
+                position: absolute;
+                bottom: 0px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 20px;
+                transition: .3s;
+            }
+
+            img {
+                filter: invert(0);
+            }
+        }
+    }
+}
+
+h5 {
+    width: 100px;
+}
+
+@media (max-width:767px) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        gap: 10px !important;
+        margin-bottom: 0 !important;
+
+        .tab {
+            padding: 0px;
+            text-align: center;
+            display: flex;
+
+            h5 {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .description {
+        padding: 30px;
+    }
+
+}
+
+.img-container {
+    width: 125px;
+    margin: 0 auto;
+    height: 50px;
+
+    img {
+        width: 100%;
+        filter: invert(.5);
+        transition: .3s;
+    }
+}
+
+@media (max-width:767px) {
+    .img-container {
+        width: 110px;
+        height: 40px;    
+       margin-top: 5px;
+    }
+}

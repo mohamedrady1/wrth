@@ -1,0 +1,191 @@
+<nav class="navbar mobile-navbar navbar-expand-xl" id="navbar-main">
+  <div class="collapse navbar-collapse" [ngClass]="{ show: showMenu }" id="CollapsingNavbar">
+    <div class="collapse-only d-flex d-xl-none">
+      <section class="region region-header-collapse-top">
+        <!-- <nav
+          role="navigation"
+          aria-labelledby="block-search-menu"
+          id="block-search"
+          class="block block-menu navigation menu--search"
+        >
+          <h2 class="sr-only" id="block-search-menu">Search</h2>
+
+          <ul class="clearfix nav">
+            <li class="nav-item">
+              <a
+                href="/search"
+                class="search nav-link nav-link--search"
+                data-drupal-link-system-path="search"
+                >search</a
+              >
+            </li>
+          </ul>
+        </nav> -->
+        <div class="language-switcher-language-url block block-language block-language-blocklanguage-interface"
+          id="block-languageswitcher" role="navigation">
+          <span class="cursor-pointer text-dark border-dark border px-2" [ngClass]="{
+          'is-active': selectedLanguage === 'en',
+          'hidden' : selectedLanguage === 'ar',
+        }" (click)="changeLanguage('ar')">Ar</span>
+          <span class="cursor-pointer text-dark border-dark border px-2" [ngClass]="{
+          'is-active': selectedLanguage === 'ar',
+          'hidden' : selectedLanguage === 'en',
+        }" (click)="changeLanguage('en')">En</span>
+        </div>
+      </section>
+
+      <section class="region region-header-collapse-bottom">
+        <nav role="navigation" aria-labelledby="block-rita-main-menu-menu" id="block-rita-main-menu"
+          class="block block-menu navigation menu--main">
+          <h2 class="sr-only" id="block-rita-main-menu-menu">
+            Main navigation
+          </h2>
+          <ul class="menu menu-level-0">
+            <li class="menu-item">
+              <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" data-drupal-link-system-path="<front>">
+                {{ navbarLocal.home[selectedLanguage] }}
+              </a>
+            </li>
+          
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/about', 'abouttheinstitute']" routerLinkActive="is-active"
+                 data-drupal-link-system-path="node/34" [ngClass]="{ 'active': isSubMenuOpenInstitute }"
+                 (click)="toggleSubMenuState('Institute')">
+                {{ navbarLocal.about[selectedLanguage] }}
+              </a>
+              <i class="fa fa-angle-down dropdown-icon" (click)="toggleSubMenuState('Institute')"></i>
+          
+              <div class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default"
+                   [class.d-flex]="isSubMenuOpenInstitute">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let about of aboutInstitutePages">
+                      <a [routerLink]="['/about/', about.slug]" data-drupal-link-system-path="node/5">
+                        {{ selectedLanguage === 'ar' ? about.titleAr : about.title }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/program/entrepreneurshipandincubationprograms/']" routerLinkActive="is-active"
+                 data-drupal-link-system-path="node/34" [ngClass]="{ 'active': isSubMenuOpenEntrepreneurship }"
+                 (click)="toggleSubMenuState('Entrepreneurship')">
+                {{ navbarLocal.programs3[selectedLanguage] }}
+              </a>
+              <i class="fa fa-angle-down dropdown-icon" (click)="toggleSubMenuState('Entrepreneurship')"></i>
+          
+              <div class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default"
+                   [class.d-flex]="isSubMenuOpenEntrepreneurship">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let program of EntrepreneurshipPages">
+                      <a [routerLink]="['/program/', program.slug]" data-drupal-link-system-path="node/5">
+                        {{ selectedLanguage === 'ar' ? program.titleAr : program.title }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/program/communityprograms/']" routerLinkActive="is-active"
+                 data-drupal-link-system-path="node/34" [ngClass]="{ 'active': isSubMenuOpenAwarenessprogrammes }"
+                 (click)="toggleSubMenuState('Awarenessprogrammes')">
+                {{ navbarLocal.programs4[selectedLanguage] }}
+              </a>
+              <i class="fa fa-angle-down dropdown-icon" (click)="toggleSubMenuState('Awarenessprogrammes')"></i>
+          
+              <div class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default"
+                   [class.d-flex]="isSubMenuOpenAwarenessprogrammes">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let program of awarenessprogrammes">
+                      <a [routerLink]="['/program/', program.slug]" data-drupal-link-system-path="node/5">
+                        {{ selectedLanguage === 'ar' ? program.titleAr : program.title }}
+                      </a>
+                    </li>
+                    <li class="menu-item">
+                      <a [routerLink]="['Events']" data-drupal-link-system-path="node/5">
+                        {{ selectedLanguage === 'ar' ? "الفعاليات" : "Events" }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/program', educationProgramsPages?.[0]?.slug]" data-drupal-link-system-path="node/34"
+                 [routerLink]="['/program']" [ngClass]="{ 'active': isSubMenuOpenPrograms }"
+                 (click)="toggleSubMenuState('Programs')">
+                {{ navbarLocal.programs[selectedLanguage] }}
+              </a>
+              <i class="fa fa-angle-down dropdown-icon" (click)="toggleSubMenuState('Programs')"></i>
+          
+              <div class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default"
+                   [class.d-flex]="isSubMenuOpenPrograms">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let program of educationProgramsPages">
+                      <a [routerLink]="['/program/', program.slug]" data-drupal-link-system-path="node/5">
+                        {{ selectedLanguage === 'ar' ? program.titleAr : program.title }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/media-center']" routerLinkActive="is-active" data-drupal-link-system-path="node/34"
+                 [ngClass]="{ 'active': isSubMenuOpenMedia }" (click)="toggleSubMenuState('Media')">
+                {{ navbarLocal.media[selectedLanguage] }}
+              </a>
+              <i class="fa fa-angle-down dropdown-icon" (click)="toggleSubMenuState('Media')"></i>
+          
+              <div class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default"
+                   [class.d-flex]="isSubMenuOpenMedia">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let media of mediaPages">
+                      <a [routerLink]="['/media/', media.slug]" data-drupal-link-system-path="node/5">
+                        {{ selectedLanguage === 'ar' ? media.titleAr : media.title }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          
+            <li class="menu-item menu-item--expanded">
+              <a href="https://lms.wrth.edu.sa/" class="nav-menu-link" 
+                 target="_blank">
+                {{ navbarLocal.studentLogin[selectedLanguage] }}
+              </a>
+              <i class="fa fa-angle-down dropdown-icon" (click)="toggleSubMenuState('Login')"></i>
+          
+              <div class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default"
+                   [class.d-flex]="isSubMenuLogin">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let login of loginPages">
+                      <a [href]="login?.link" target="_blank" data-drupal-link-system-path="node/5">
+                        {{ selectedLanguage === 'ar' ? login.titleAr : login.title }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+          
+          
+        </nav>
+      </section>
+    </div>
+  </div>
+</nav>

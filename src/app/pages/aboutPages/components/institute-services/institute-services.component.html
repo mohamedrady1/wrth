@@ -1,0 +1,21 @@
+<div class="container pt-5">
+    <div class="row">
+        <div *ngFor="let item of itemsList" class="section col-md-4">
+            <div class="card h-auto border-0">
+                <div class="card-body">
+                    <h2 class="section-title pb-4 fw-bold">
+                        {{ lang === 'ar' ? item?.titleAr : item?.title }}
+                    </h2>
+                    <ng-container *ngFor="let element of item?.items">
+                        <h3 class="item-title">
+                            {{ lang === 'ar' ? element?.titleAr : element?.title }}
+                        </h3>
+                        <p class="item-description">
+                            {{ lang === 'ar' ? element?.descriptionAr: element?.description }}
+                        </p>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

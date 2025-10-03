@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="page-path d-flex flex-wrap align-items-center mb-3">
+        <a [routerLink]="['']">
+            {{ lang == "ar" ? "الرئيسية" : 'Home'}}
+        </a>
+    </div>
+    <h1 class="page-title">{{ lang == "ar" ? "الشروط والأحكام" : "Terms and Conditions" }}</h1>
+    <div>
+        <h2>{{ lang == "ar" ? "يشترط لقبول المتقدم في البرامج التدريبية ما يلي:" : "Admission to advanced programs
+            requires the following:" }}</h2>
+        <br>
+        <div class="content">
+            <h4>{{ lang == "ar" ? "• أن يكون سعودي الجنسية أو من أم سعودية." : "• He must be of Saudi nationality or
+                from a Saudi mother." }}</h4>
+            <h4>{{ lang == "ar" ? "• ألا يقل عمره عن ثمانية عشر (18) عاماً." : "• He must not be less than eighteen (18)
+                years old." }}</h4>
+            <h4>{{ lang == "ar" ? "• أن يستوفي المتطلبات المسبقة الخاصة بالبرنامج المتقدم له -إن وجد." : "• Must meet
+                the pre-requisites for the program applied for - if any." }}</h4>
+            <h4>{{ lang == "ar" ? "• أن يستوفي أي شروط أخرى خاصة يُ علن عنها وقت فتح باب التقديم على البرنامج." : "•
+                Must meet any other special conditions announced at the time of opening applications for the program."
+                }}</h4>
+            <h4>{{ lang == "ar" ? "• أن يجتاز بنجاح أي اختبار أو مقابلة شخصية يحددها المعهد." : "• To successfully pass
+                any test or personal interview determined by the institute." }}</h4>
+            <h4>{{ lang == "ar" ? "• أن يتعهد بااللتزام بضوابط وأحكام وشروط برامج التعليم المستمر وأنظمة ولوائح المعهد."
+                : "• To pledge to adhere to the controls, terms and conditions of continuing education programs and the
+                institute’s rules and regulations." }}</h4>
+            <h4>{{ lang == "ar" ? "• ألا يكون مستبعدا أكثر من مره واحدة من أي من برامج التعليم المستمر." : "• Not to be
+                excluded more than once from any of the following: Continuing education programs." }}</h4>
+                <h4>{{ lang == "ar" ? "• أن يلتزم بعدم التسجيل في البرامج التدريبية المتزامنة." : "• He must commit not to register in simultaneous training programs." }}</h4>
+                    <h4>{{ lang == "ar" ? "• يحق للمعهد الطلب من المتقدم تقديم موافقة خطية من مرجعه الوظيفي للالتحاق بالبرنامج بما لا يتعارض مع أوقات عمله ." : "• The Institute has the right to ask the applicant to provide written approval from his job reference to join the program in a way that does not conflict with his working hours." }}</h4>
+        </div>
+    </div>
+    <div>
+        <br>
+        <h2>{{ lang == "ar" ? "ما يلغى قبول المتقدم في أي من الحالات التالية :" : "The applicant's acceptance will be
+            canceled in any of the following cases:" }}</h2>
+        <br>
+        <div class="content">
+            <h4>{{ lang == "ar" ? "• إذا تأخر عن إتمام إجراءات التسجيل في المواعيد المحددة دون عذر يقبله المعهد." : "• If he is late in completing procedures Registration on the specified dates without an excuse accepted by the institute." }}</h4>
+            <h4>{{ lang == "ar" ? "• إذا تبين وجود تزوير أو عدم صحة أو دقة البيانات والمعلومات المقدمة في استمارة التسجيل." : "• If it is found that there is fraud or inaccuracy of the data and information provided in the registration form." }}</h4>
+            <h4>{{ lang == "ar" ? "• إذا تغيب المتدرب في اليوم الأول من البرنامج التدريبي دون عذر يقبله المعهد." : "• If the trainee is absent on the first day of the training program without an excuse accepted by the institute." }}</h4>
+            <h4>{{ lang == "ar" ? "• إذا فقد أو أخل بأي شرط من شروط القبول المقررة." : "• If he loses or violates any of the stipulated acceptance conditions." }}</h4>
+        </div>
+    </div>
+    <div>
+        <br>
+        <h2>{{ lang == "ar" ? "التقييم والاجتياز:" : "Evaluation and passing:" }}</h2>
+        <br>
+        <div class="content">
+            <h4>{{ lang == "ar" ? "• يلتزم المتدرب بحضور ما لا يقل عن (75 %) من الساعات المقررة للبرنامج التدريبي، ويترتب على عدم حضور المتدرب الساعات المقررة عدم اجتيازه للبرنامج، ويجوز تعويض المتدرب للساعات غير المستكملة لاحقا في حال تقديمه لعذر يقبله المعهد." : "• The trainee is committed to attending no less than (75%) of the hours scheduled for the training program. The trainee’s failure to attend the scheduled hours will result in him not passing the program. The trainee may be compensated for the uncompleted hours later if he presents an excuse acceptable to the institute." }}</h4>
+            <h4>{{ lang == "ar" ? "• لا يجوز للمتدرب أن يتأخر أكثر من خمس عشرة دقيقة عن الوقت المحدد للحضور، فإن تأخر أكثر من ذلك يتم تنبيهه كتابيا في المرة الأولي من قبل المدرب، وفي حال تأخر مرة أخرى يعد غائبا لذلك اليوم." : "• The trainee may not be more than fifteen minutes late At the time specified for attendance, if you are late more than that, your attendance will be delayed He is warned in writing the first time by the trainer, and in If he is late again, he is considered absent for that day." }}</h4>
+            <h4>{{ lang == "ar" ? "• يلتزم المتدرب بتنفيذ المهام والواجبات التدريبية المطلوبة وما يكلف به خلال مدة البرنامج التدريبي." : "• The trainee is committed to carrying out the required training tasks and duties and what he is assigned to do during the duration of the training program." }}</h4>
+            <h4>{{ lang == "ar" ? "• يتم تقييم أداء المتدرب وفق معايير التقييم المعتمدة لكل برنامج تدريبي." : "• The trainee's performance is evaluated according to the approved evaluation criteria for each training program." }}</h4>
+            <h4>{{ lang == "ar" ? "• يحق للمتدرب الاعتراض على نتيجة التقييم بتقديم طلب مكتو ب لدى إدارة خدمات الطالب في المعهد خالل مدة لا تتجاوز خمسة أيام من تاريخ إعلان نتيجة التقييم." : "• The trainee has the right to object to the evaluation result by submitting a request Written by the Student Services Department at the institute within a period not exceeding five days from the date of announcing the evaluation result." }}</h4>
+        </div>
+    </div>
+    <div>
+        <br>
+        <h2>{{ lang == "ar" ? "الحصول على الشهادة:" : "Obtaining the certificate:" }}</h2>
+        <br>
+        <div class="content">
+            <h4>{{ lang == "ar" ? "• يُمنح المتدرب شهادة حضورعند حضوره ما لا يقل عن (75 %) من الساعات المقررة للبرنامج." : "• The trainee is given a certificate of attendance when he attends no less than (75%) of the hours scheduled for the program." }}</h4>
+            <h4>{{ lang == "ar" ? "• يُمنح المتدرب شهادة اجتياز عند اجتياز التقييم النهائي المحدد للبرنامج التخصصي بنجاح." : "• The trainee is given a pass certificate upon successfully passing the final assessment specified for the specialized program." }}</h4>
+        </div>
+    </div>
+    <div>
+        <br>
+        <h2>{{ lang == "ar" ? "الملكية الفكرية:" : "intellectual property" }}</h2>
+        <br>
+        <div class="content">
+            <h4>{{ lang == "ar" ? "•  يلتزم المتدرب بأن تكون الأعمال والتصاميم التي يطورها خلال البرنامج التدريبي أصيلة ومن إنتاجه الخاص ولا تنتهك حقوق الملكية الفكرية الخاصة بالغير، ويتحمل المسؤولية الكاملة عن ذلك" : "• The trainee is committed to ensuring that the works and designs he develops during the training program are original and of his own production and do not violate the intellectual property rights of others, and he bears full responsibility for that." }}</h4>
+            <h4>{{ lang == "ar" ? "•  تكون الملكية الفكرية للأعمال والتصاميم التي يتم تطويرها من قبل المتدرب خالل البرنامج التدريبي للمتدرب، ويحق للمعهد الاحتفاظ باأعمال المنتجة والتصرف فيها مع حفظ الملكية الفكرية للمتدرب المنتج للعمل ." : "• The intellectual property is for the works and designs that are developed by the trainee during the trainee’s training program, and the Institute has the right to retain and dispose of the produced works while preserving the intellectual property of the trainee producing the work." }}</h4>
+            <h4>{{ lang == "ar" ? "•  يلتزم المتدرب بعدم مشاركة محتويات البرنامج أو إعادة تقديمها أو نشر المواد المرئية والمسموعة بأي وسيلة بما في ذلك مواقع التواصل الاجتماعي." : "• The trainee is committed not to share or re-present the contents of the program or publish visual and audio materials by any means, including social networking sites." }}</h4>        
+            <h4>{{ lang == "ar" ? "•  يلتزم المتدرب بعدم مشاركة محتويات البرنامج أو إعادة تقديمها أو نشر المواد المرئية والمسموعة بأي وسيلة بما في ذلك مواقع التواصل الاجتماعي أو أي منصة أخرى إلا بعد الحصول على موافقة كتابية مسبقة من المعهد باعتبارها ملكا خالصا للمعهد." : "• The trainee is obligated not to share or re-submit the contents of the program or publish visual and audio materials by any means, including social networking sites or any other platform, except after obtaining prior written approval from the Institute, as it is the sole property of the Institute." }}</h4>        
+        </div>
+    </div>
+    <div>
+        <br>
+        <h2>{{ lang == "ar" ? "أحكام عامة:" : "General provisions:" }}</h2>
+        <br>
+        <div class="content">
+            <h4>{{ lang == "ar" ? "• يتم التواصل مع المقبولين عبر البريد الإلكتروني المذكور في نموذج تقديم طلب الالتحاق لتأكيد تسجيلهم، وفي حال عدم التأكيد خلال 24 ساعة يلغى التسجيل." : "• Accepted applicants will be contacted via the email mentioned in the application form to confirm their registration. If confirmation is not made within 24 hours, registration will be cancelled." }}</h4>
+            <h4>{{ lang == "ar" ? "• يزود كل متدرب ببريد للقبول يُلزم بإبرازه خلال تواجده في المعهد." : "• Each trainee is provided with an acceptance letter that he must present during his presence at the institute." }}</h4>
+            <h4>{{ lang == "ar" ? "• في حال تتطلب البرنامج التدريبي مشاركة المتدرب في الرحالت التعليمية فإنه يقر باطالعه والتزامه بكافة تعليمات وإرشادات السالمة العامة، بما في ذلك المخاطر المهنية المرتبطة بها، ويتحمل المتدرب كافة المسؤولية التي تترتب على مخالفته لذلك." : "• If the training program requires the trainee to participate in educational trips, he acknowledges his awareness of and commitment to all general safety instructions and guidelines, including risks. related professional requirements, and the trainee bears all responsibility resulting from his violation of this." }}</h4>
+            <h4>{{ lang == "ar" ? "• يحق للمعهد الملكي للفنون التقليدية توثيق البرامج التدريبية ألغراض إعالمية من خلال التصوير الفوتوغرافي أو الفيديو." : "• The Royal Institute of Traditional Arts is entitled Documenting training programs for informational purposes During photography or video." }}</h4>
+            <h4>{{ lang == "ar" ? "• يلتزم المتدرب بالمحافظة على حسن السلوك والالتزام بأنظمة ولوائح المعهد والامتناع عن أي عمل من شأنه الإخلال بالنظام والآداب العامة وما يعيق سير العملية التدريبية." : "• The trainee is committed to maintaining good behavior, adhering to the institute’s regulations and laws, and abstaining from any act of training and practice within the system, public morals, and what follows the course of the training work." }}</h4>
+        </div>
+    </div>
+</div>

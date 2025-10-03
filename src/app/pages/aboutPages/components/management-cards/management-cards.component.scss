@@ -1,0 +1,81 @@
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+    gap: 17px;
+    margin-top: 20px;
+}
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border: 0;
+        align-items: center;
+        margin-bottom: 10px;
+       min-width: 245px;
+       padding: 20px 0;
+        align-items: center;
+        text-align: center;
+        transition: .4s;
+        &:hover{
+        box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+
+        }
+        .img-container{
+            box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 20px;
+            img{
+                object-fit: fill;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .profile{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+            p{
+                text-align: center;
+            }
+            .name{
+                margin-bottom: 5px;
+                font-size: 20px;
+            }
+            .role{
+                position: relative;
+                width: fit-content;
+                color: #e04403
+                ;
+                font-size: 18px;
+                flex: 1;
+               
+            }
+            .email{
+                position: relative;
+                margin-top: 5px;
+                flex: 1;
+                p{
+                    margin-bottom: 0;
+                    font-size: 14px;
+
+
+                }
+                ::before{
+                    content: '';
+                    position: absolute;
+                    top: -10px;
+                    left: 0;
+                    background-color: rgba(128, 128, 128, 0.04);
+                    width: 100%;
+                    height: 1px;
+                }
+            }
+        }
+    }

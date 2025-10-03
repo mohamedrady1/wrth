@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="title">
+    {{ lang == 'en' ? 'Jobs' : 'الوظائف' }}
+  </h1>
+
+  <div class="tabs">
+    <div class="tab" [ngClass]="{ active: activeTab === 'all-jobs' }" (click)="selectTab('all-jobs')">
+      {{ lang == 'en' ? 'All Jobs' : 'جميع الوظائف' }}
+    </div>
+    <div class="tab" [ngClass]="{ active: activeTab === 'admin-jobs' }" (click)="selectTab('admin-jobs')">
+      {{ lang == 'en' ? 'Administrative Jobs' : 'وظائف إدارية' }}
+    </div>
+    <div class="tab" [ngClass]="{ active: activeTab === 'professional-jobs' }" (click)="selectTab('professional-jobs')">
+      {{ lang == 'en' ? 'Professional Jobs' : 'وظائف مهنية' }}
+    </div>
+    <div class="tab" [ngClass]="{ active: activeTab === 'technical-jobs' }" (click)="selectTab('technical-jobs')">
+      {{ lang == 'en' ? 'Technical Jobs' : 'وظائف فنية' }}
+    </div>
+    <div class="tab" [ngClass]="{ active: activeTab === 'education-agency-jobs' }"
+      (click)="selectTab('education-agency-jobs')">
+      {{ lang == 'en' ? 'Education Agency Jobs' : 'وكالة الشؤون التعليمية' }}
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <p *ngIf="activeTab === 'all-jobs'">
+      {{ lang == 'en' ? 'No jobs available at the moment' : 'لا توجد وظائف متاحة في الوقت الحالي' }}
+    </p>
+    <p *ngIf="activeTab === 'admin-jobs'">
+      {{ lang == 'en' ? 'No jobs available at the moment' : 'لا توجد وظائف متاحة في الوقت الحالي' }}
+    </p>
+    <p *ngIf="activeTab === 'professional-jobs'">
+      {{ lang == 'en' ? 'No jobs available at the moment' : 'لا توجد وظائف متاحة في الوقت الحالي' }}
+    </p>
+    <p *ngIf="activeTab === 'technical-jobs'">
+      {{ lang == 'en' ? 'No jobs available at the moment' : 'لا توجد وظائف متاحة في الوقت الحالي' }}
+    </p>
+    <p *ngIf="activeTab === 'education-agency-jobs'">
+      {{ lang == 'en' ? 'No jobs available at the moment' : 'لا توجد وظائف متاحة في الوقت الحالي' }}
+    </p>
+    <p *ngIf="!activeTab || activeTab === ''">
+      {{ lang == 'en' ? 'No jobs available at the moment' : 'لا توجد وظائف متاحة في الوقت الحالي' }}
+    </p>
+  </div>
+</div>

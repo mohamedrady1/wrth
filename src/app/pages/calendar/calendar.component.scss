@@ -1,0 +1,44 @@
+.calendar-container {
+  padding: 20px;
+  background-color: white;
+}
+
+.calendar-container h2 {
+  font-size: 50px;
+  line-height: 60px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.calendar-container p {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: 700;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.calendar-table thead th {
+  background-color: #f5f7f7 !important;
+  color: #101820;
+}
+
+
+.calendar-table tbody tr:nth-child(even) {
+  background-color: #f5f7f7;
+}
+
+.calendar-table td,
+.calendar-table th {
+  padding: 20px 0;
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: 700;
+  text-align: center;
+}

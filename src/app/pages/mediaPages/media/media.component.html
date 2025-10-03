@@ -1,0 +1,19 @@
+<div class="container">
+  <!-- <nav aria-label="breadcrumb" class="breadcrumb-container">
+    <div class="breadcrumb-links">
+      <a class="breadcrumb-link" routerLink="/">{{ navbarLocal.home[lang] }}</a>
+      <span class="breadcrumb-divider" *ngIf="!isMediaRoot"> &gt; </span>
+      <a *ngIf="!isMediaRoot" class="breadcrumb-link">{{
+        navbarLocal.media[lang]
+        }}</a>
+    </div>
+  </nav> -->
+  <div class="row" *ngIf="isMediaRoot">
+  </div>
+
+  <div class="row" *ngIf="!isMediaRoot">
+    <div class="col-lg-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

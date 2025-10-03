@@ -1,0 +1,38 @@
+<div class="mb-4 gallery-container" #photogallery appDisableScroll>
+    <div *ngFor="let img of pageContent?.galleries;let i = index" class="photo-container" #photogalleryContainer>
+        <img [src]="img?.filePath|| ''" [alt]="lang === 'ar' ? img[i]?.titleAr || '' : img[i]?.title || ''"
+            loading="lazy" />
+    </div>
+</div>
+<div class=" slider">
+    <div class="page-content photo-gallary">
+
+        <div class="images-slider" appDisableScroll #imageSlider>
+            <div class="img-cont" *ngFor="let image of pageContent?.galleries; let i = index"
+                [ngClass]="{'active': currentIndex === i}">
+                <img (click)="changeImage(i)" #img [src]="image?.filePath"
+                    [alt]="lang === 'ar' ? pageContent[i]?.titleAr || '' : pageContent[i]?.title || ''"
+                    loading="lazy" />
+            </div>
+        </div>
+    </div>
+
+    <ng-container
+        *ngIf="(lang === 'en' && currentIndex > 0 && showButtons) || (lang === 'ar' && currentIndex < pageContent?.galleries?.length - 1 && showButtons)">
+        <button class="slider-btn back" [id]="lang === 'ar' ? 'nextBtn' : 'backBtn'"
+            (click)="backOrNext(lang === 'ar' ? 'next' : 'back')" [attr.name]="lang === 'ar' ? 'nextBtn' : 'backBtn'"
+            [attr.aria-label]="lang === 'ar' ? 'الامام' : 'back'">
+            <img src="assets/images/icons/back.svg" [alt]="lang === 'ar' ? 'الامام' :'back'" loading="lazy">
+        </button>
+    </ng-container>
+
+    <ng-container
+        *ngIf="(lang === 'en' && currentIndex < pageContent?.galleries?.length - 1 && showButtons) || (lang === 'ar' && currentIndex > 0 && showButtons)">
+        <button class="slider-btn next" [id]="lang === 'ar' ? 'backBtn' : 'nextBtn'"
+            (click)="backOrNext(lang === 'ar' ? 'back' : 'next')" [attr.name]="lang === 'ar' ? 'backBtn' : 'nextBtn'"
+            [attr.aria-label]="lang === 'ar' ? 'الخلف' : 'next'">
+            <img src="assets/images/icons/next.svg" [alt]="lang === 'ar' ? 'الخلف' :'next'" loading="lazy">
+        </button>
+    </ng-container>
+</div>
+<div class="zig-zag-gallery-line"></div>

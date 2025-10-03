@@ -1,0 +1,66 @@
+<div class="row-offcanvas row-offcanvas-left clearfix">
+  <main class="main-content" id="content" role="main">
+    <!--<div id="block-rita-page-title" class="block block-core block-page-title-block">
+      <div class="content">
+        <div class="container">
+          <h1 class="page-title">
+            <span class="field field--name-title field--type-string field--label-hidden">
+              الفعاليات
+            </span>
+          </h1>
+        </div>
+      </div>
+    </div>-->
+    <!--<div class="product-details card">
+    <div class="product-image card-body">
+      <img class="img_det" [src]="'assets/images/logo.svg'" alt="">
+    </div>-->
+    <!-- Add other product details here -->
+    <!--</div>-->
+    <div class="events_list ">
+      <div class="container">
+        <div class="events_list_form">
+
+          <div class="row d-flex align-items-center " *ngIf="result.isValid">
+            <div class="">
+              <img [src]="'assets/images/done.svg'" alt="">
+            </div>
+            <div class="text_detailsList">
+              <h3 class="acc"><i class="fa fa-check-circle" aria-hidden="true"></i>
+                {{ lang == "en" ? "The ticket has been accepted" : "تم قبول التذكرة" }}
+              </h3>
+            </div>
+            <hr />
+
+            <table class="custom-table">
+              <tr>
+                <th>{{ lang == "en" ? "Name" : "الاسم" }}</th>
+                <th>{{ lang == "en" ? "Mobile Number" : "رقم الجوال" }}</th>
+                <th>{{ lang == "en" ? "Email" : "الايميل" }}</th>
+
+              </tr>
+              <tr>
+                <td>{{result.name}}</td>
+                <td class="normal-font">{{result.phone}}</td>
+                <td>{{result.email}}</td>
+              </tr>
+            </table>
+
+          </div>
+
+          <div class="row d-flex align-items-center" *ngIf="!result.isValid">
+
+            <div class="">
+              <img [src]="'assets/images/cross.svg'" alt="">
+            </div>
+            <div class="text_detailsList">
+              <h3 class="declin"><i class="fa fa-times-circle" aria-hidden="true"></i>
+                {{ lang == "en" ? "The ticket has expired" : "تم انتهاء صلاحية التذكرة" }}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

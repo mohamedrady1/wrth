@@ -1,0 +1,38 @@
+<div>
+  <h1 class="mb-5">
+    {{ getCurrentProgramTitle() }}
+  </h1>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <ul class="list-group mb-4">
+        <li *ngFor="let item of navBarList" class="list-group-item bg-light border border-bottom"
+          [ngClass]="{ 'text-left': lang === 'ar' }">
+          <a [routerLink]="['/program', item.slug]" routerLinkActive="active">
+            {{ lang === "ar" ? item.titleAr : item.title }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-9" *ngIf="isProgramDetailsRoot">
+      <ng-container>
+        <div *ngIf="!isLoading">
+          <div [innerHtml]="
+            lang === 'ar'
+              ? pageContent?.descriptionAr || ''
+              : pageContent?.description || ''
+          " class="mb-5 pb-5"></div>
+        </div>
+      </ng-container>
+      <div *ngIf="isLoading">
+        <app-loading></app-loading>
+      </div>
+    </div>
+    <div class="col-lg-9" *ngIf="!isProgramDetailsRoot">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-lg-12">
+      <app-training-courses [slug]="name"></app-training-courses>
+    </div>
+  </div>
+</div>

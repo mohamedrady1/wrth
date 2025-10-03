@@ -1,0 +1,10 @@
+.icon {
+    width: 2em;
+    height: 2em;
+  }
+.program{
+  max-width: 200px !important;
+  @media (max-width:500px) {
+  max-width: 170px !important;
+  }
+}

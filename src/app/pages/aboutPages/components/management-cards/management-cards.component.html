@@ -1,0 +1,28 @@
+<div class="cards my-3">
+    <div class="card text-start col-lg-4 col-md-4" *ngFor="let item of itemsList">
+        <div class="img-container">
+            <img [src]="item?.img" [alt]="lang === 'ar' ? item?.nameAr || '' : item?.name || ''"
+                onerror="src='assets/images/people/person-20.svg'">
+        </div>
+        <ng-container *ngIf="item.name ">
+            <div class="profile mt-3">
+                <div class="name ">
+                    <p class="mb-1" [innerHtml]="lang === 'ar' ?  item?.nameAr|| '' :item?.name||''"></p>
+                </div>
+                <div class="role">
+                    <p class="text-center " [innerHtml]="lang === 'ar' ?  item?.roleAr|| '' :item?.role||''"></p>
+                </div>
+                <ng-container *ngIf="item.email||item.number">
+                    <div class="email">
+                        <ng-container *ngIf="item.email &&item.email!=''">
+                            <p><a [href]="'mailto:' + item?.email" [innerHTML]="item?.email"></a></p>
+                        </ng-container>
+                        <ng-container *ngIf="item.number&&item.number!=''">
+                            <p> <a [href]="'tel:' + item?.number" [innerHTML]="item?.number"></a></p>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+</div>

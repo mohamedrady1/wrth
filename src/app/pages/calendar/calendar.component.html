@@ -1,0 +1,8 @@
+<div class="container" *ngIf="!isLoading">
+  <h2 class="pt-5" [innerHtml]="lang === 'ar' ? academicCalenderData?.titleAr : academicCalenderData?.title"></h2>
+  <div class="my-5"
+    [innerHtml]=" lang === 'ar' ? academicCalenderData?.descriptionAr : academicCalenderData?.description"></div>
+</div>
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>

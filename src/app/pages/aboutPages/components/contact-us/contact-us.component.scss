@@ -1,0 +1,78 @@
+div{
+    width: 95%;
+    margin: auto;
+    h2{
+        font-size: 50px;
+    }
+    .title,h6{
+        margin-left: 80px;
+    }
+}
+a{
+    text-decoration: none !important;
+}
+    .location-card {
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 50px;
+      text-align: left;
+    }
+    .location-card h2 {
+      font-size: 28px;
+      color: #333;
+      font-weight: 500;
+      font-size: bold
+      ;
+    }
+    strong{
+      font-size: 28px;
+      font-weight: normal;
+      margin: 20px 10px ;
+      color: gray;
+    }
+    p{
+        font-size: 26px;
+        font-weight: normal;
+        margin-bottom: 35px;
+    }
+    .location-card .icon {
+      font-size: 28px;
+      margin-right: 8px;
+    }
+    .location-card a {
+      color: #025157;
+      text-decoration: none;
+      font-weight: normal;
+      &:hover{
+        .arrow{
+            span{
+            background-color: #025157;
+            width: fit-content;
+            svg{
+                fill:white;
+                stroke: white;
+            }
+            }
+        }
+      }
+    }
+    .location-card a:hover {
+      text-decoration: underline;
+    }
+    .arrow{
+        margin-left: 5px;
+        span{
+        border:1px solid #025157;
+        padding:3px 0;
+        transition: .3s;
+
+        }
+    }
+    @media (max-width:1024px) {
+      .title,h6{
+        margin-left: 20px !important;
+    }
+        div{
+            width: 100%;
+            }
+    }

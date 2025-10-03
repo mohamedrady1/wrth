@@ -1,0 +1,48 @@
+.header {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breadcrumb:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.tab {
+  color: #6c757d;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+.tab.active {
+  color: #b38b58; /* Matches the color for the active tab */
+  border-bottom: 2px solid #b38b58;
+}
+
+.tab:hover {
+  color: #b38b58;
+}
+
+.tab-content {
+  font-size: 18px;
+  color: #333;
+  margin-top: 40px;
+  text-align: center;
+}

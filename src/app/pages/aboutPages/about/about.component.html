@@ -1,0 +1,93 @@
+<div *ngIf="!isContactUsRoute">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <ul class="list-group mb-4">
+          <li *ngFor="let item of navBarList" class="list-group-item bg-light border border-bottom"
+            [ngClass]="{ 'text-left': lang === 'ar' }">
+            <a [routerLink]="['/about', item.slug]" routerLinkActive="active">
+              {{ lang === "ar" ? item.titleAr : item.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="isContactUsRoute">
+
+  <div class="col-12">
+    <app-contact-us [lang]="lang"></app-contact-us>
+  </div>
+</div>
+<div class="row container m-auto" *ngIf="isContactUsRoute">
+  <div class="col-xl-5 col-lg-12">
+    <div class="contact-form">
+      <h2 [ngClass]="{ 'text-right' : lang==='en' }">{{ lang === "ar" ? "تواصل معنا" : "Contact Us" }}</h2>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-group d-flex" [ngClass]="{ 'align-items-start' : lang==='en' }">
+          <label for="name">{{ lang === "ar" ? "الاسم" : "Name" }}</label>
+          <input id="name" formControlName="name" [placeholder]="lang === 'ar' ? 'ادخل الاسم' : 'Enter your name'" />
+        </div>
+
+        <div class="form-group d-flex" [ngClass]="{ 'align-items-start' : lang==='en' }">
+          <label for="email">{{ lang === "ar" ? "البريد الإلكتروني" : "Email" }}</label>
+          <input id="email" formControlName="email"
+            [placeholder]="lang === 'ar' ? 'example@gmail.com' : 'example@gmail.com'" />
+        </div>
+
+        <div class="form-group d-flex" [ngClass]="{ 'align-items-start' : lang==='en' }">
+          <label for="contactReason">{{ lang === "ar" ? "جهة التواصل" : "Contact Reason" }}</label>
+          <select id="contactReason" formControlName="contactReason">
+            <option value="اختر" selected>{{ lang === "ar" ? "- اختر -" : "- Select -" }}</option>
+            <option value="استفسار">{{ lang === "ar" ? "استفسار" : "Inquiry" }}</option>
+            <option value="اقتراح">{{ lang === "ar" ? "اقتراح" : "Suggestion" }}</option>
+            <option value="دعم فني">{{ lang === "ar" ? "دعم فني" : "Technical Support" }}</option>
+            <option value="شكوى">{{ lang === "ar" ? "شكوى" : "Complaint" }}</option>
+          </select>
+        </div>
+
+        <div class="form-group d-flex" [ngClass]="{ 'align-items-start' : lang==='en' }">
+          <label for="subject">{{ lang === "ar" ? "الموضوع" : "Subject" }}</label>
+          <select id="subject" formControlName="subject">
+            <option value="اختر" selected>{{ lang === "ar" ? "- اختر -" : "- Select -" }}</option>
+            <option value="التسجيل في برامج المعهد">
+              {{ lang === "ar" ? "التسجيل في برامج المعهد" : "Institute Program Registration" }}
+            </option>
+            <option value="توظيف أو تدريب تعاوني">
+              {{ lang === "ar" ? "توظيف أو تدريب تعاوني" : "Employment or Internship" }}
+            </option>
+            <option value="تعاون">{{ lang === "ar" ? "تعاون" : "Collaboration" }}</option>
+            <option value="زيارة">{{ lang === "ar" ? "زيارة" : "Visit" }}</option>
+            <option value="استقطاب طلاب المعهد">
+              {{ lang === "ar" ? "استقطاب طلاب المعهد" : "Institute Student Recruitment" }}
+            </option>
+            <option value="معلومات">{{ lang === "ar" ? "معلومات" : "Information" }}</option>
+            <option value="Other">{{ lang === "ar" ? "أخرى..." : "Other..." }}</option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="hasOtherSubject()">
+          <input formControlName="otherSubject" [placeholder]="lang === 'ar' ? 'اضف أُخرى...' : 'Add other...'" />
+        </div>
+
+        <div class="form-group">
+          <textarea formControlName="message"
+            [placeholder]="lang === 'ar' ? 'اكتب الرسالة المراد إرسالها...' : 'Write your message...'"></textarea>
+        </div>
+
+        <button type="submit">{{ lang === "ar" ? "ارسال" : "Submit" }}</button>
+      </form>
+
+    </div>
+  </div>
+  <div class="col-xl-7 col-lg-12">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1813.2668280278326!2d46.709134!3d24.639753!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde7e5b28caa53ace!2zVFJJVEEgfCDYp9mE2YXYudmH2K8g2KfZhNmF2YTZg9mKINmE2YTZgdmG2YjZhiDYp9mE2KrZgtmE2YrYr9mK2Kk!5e0!3m2!1sen!2sjo!4v1643125127298!5m2!1sen!2sjo"
+      width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>

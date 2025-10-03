@@ -1,0 +1,147 @@
+.page-title {
+    font-size: calc(1.075rem + 2.25vw);
+    font-weight: 600;
+    margin-bottom: 45px;
+  }
+  
+  @media (max-width: 1200px) {
+    .page-title {
+      font-size: calc(2.8125rem + 0.75vw);
+    }
+  }
+  
+  .page-path {
+    font-size: 0.929em;
+    margin-bottom: 1rem;
+    position: relative;
+    gap: 1rem;
+    font-size: 1rem;
+  
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  
+    svg {
+      transform: rotate(0deg);  
+    }
+  }
+h2{
+  font-weight: 600;
+  color: #025157;
+    font-size: 3.75rem;
+    @media (max-width:1024px) {
+    font-size:2.5rem;
+    }
+}
+a{
+  color: #025157;
+  font-weight: 500;
+  font-size: 1.625rem;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  gap: 5px;
+  &:hover{
+    .more {
+      background-color: #025157;
+      svg {
+        stroke: white;
+      }
+    }
+  }
+  .more {
+    color: #025157;
+    border: 1px solid #025157;
+    font-size: 31px;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    border-radius: 50%;
+    line-height: 0.8;
+    transition: 0.35s;
+    flex-shrink: 0;
+    margin-top: 8px !important;
+  
+    svg {
+      stroke: #025157;
+      width: 100%;
+    }
+  }
+  
+}
+.news-card {
+  background-color: #f2f3f3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+
+  &:hover {
+    .card-body {
+      .wrapper {
+        .title {
+          a.more {
+            background-color: #101820;
+            color: white;
+            svg {
+              stroke: white;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+.img-container{
+  height: 26.125rem;
+  cursor: pointer;
+  img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+}
+  &:hover 
+  {
+      .img-container{
+      
+      img {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+          }
+      }   
+  }
+  .img-container{
+      img {
+          -webkit-transition: 0.3s;
+          transition: 0.3s;
+      }
+  }
+  .card-body{
+      padding: 0;
+      flex-grow: 1 !important;
+      position: absolute;
+      bottom: 20px;
+      width: 94%;
+    .card-title{
+      color: white !important;
+      z-index: 5;
+      padding: 10px;
+      text-align: center !important;
+      font-size: 30px;
+      width: 100%;
+    }
+  }    
+
+}

@@ -1,0 +1,62 @@
+.container {
+    background-color: #f4f6f3; // Light background for the content section
+    max-width: 959px;
+  }
+  
+  .section-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #0d5257;
+    
+    margin-bottom: 1rem;
+  }
+  
+  .item-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-weight: bold;
+    color: #6b4942;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  
+  .item-description {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .card {
+    border-radius: 8px;
+    background-color: transparent;
+    position: relative;
+    &::after{
+        position: absolute;
+        content: "";
+        border: 4px double black;
+        border-color: black transparent transparent black;
+        width: 150px;
+        height: 150px;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    &::before{
+        position: absolute;
+        content: "";
+        border: 4px double black;
+        border-color: transparent black black transparent;
+        width: 150px;
+        height: 150px;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+    }
+    .card-body{
+      z-index: 2;
+    }
+  }
+  .section{
+    margin-bottom: 120px;
+  }

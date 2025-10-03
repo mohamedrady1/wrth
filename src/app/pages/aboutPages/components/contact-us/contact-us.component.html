@@ -1,0 +1,151 @@
+<div>
+    <h6><a routerLink="/">{{ lang == "en" ? 'Home' : 'الرئيسية' }}</a></h6>
+    <h2 class="title">{{ lang == "en" ? 'Contact Us' : 'تواصل معنا' }}</h2>
+    <div class="mt-5">
+        <div class="row">
+            <!-- Riyadh Card -->
+            <div class="col-md-12 col-lg-6">
+                <div class="location-card d-flex flex-column " [ngClass]="{ 'align-items-start' : lang==='ar' }">
+                    <h2>{{ lang == "en" ? 'Riyadh' : 'الرياض' }}</h2>
+                    <p><span class="icon"><svg version="1.0" width="20" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64"
+                                enable-background="new 0 0 64 64" xml:space="preserve" fill="#000000">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill="#231F20"
+                                        d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24 C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24 C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z">
+                                    </path>
+                                </g>
+                            </svg></span> <strong>{{ lang == "en" ? 'Location:' : 'الموقع:' }}</strong>
+                        <span> {{ lang == "en" ? 'Alfotah, Prince Abdullah Bin Jalawi bin Turki 8001' : 'حي الفوطة، شارع
+                            الأمير عبدالله بن جلوي بن تركي' }}</span>
+                    </p>
+                    <p><span class="icon"><svg fill="#000000" width="20" version="1.1" id="Capa_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 551.297 551.297" xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <g>
+                                            <polygon
+                                                points="336.466,551.297 374.716,551.297 374.716,373.168 336.466,384.078 ">
+                                            </polygon>
+                                            <path
+                                                d="M441.329,120.985h-80.134l-8.902,122.869c0.057,0.698,0.344,11.896-6.561,19.106c-3.538,3.701-8.396,5.651-14.057,5.651 c-3.165,0-13.903-0.44-19.221-6.13c-2.084-2.228-3.079-4.972-2.888-7.946l8.874-133.55H208.97 c71.317,15.635,70.14,104.375,70.122,105.302v162.592l2.228,0.994l45.585-13.006l9.562-2.725l38.25-10.91l9.562-2.727 l114.75-32.742c0-14.734,0-73.583,0-135.653C499.029,125.871,443.681,120.985,441.329,120.985z">
+                                            </path>
+                                            <path
+                                                d="M201.568,129.294c-4.982-0.765-9.62-1.1-13.99-1.09c-1.578,0-3.088,0.096-4.581,0.201 c-1.73,0.115-3.423,0.287-5.039,0.545c-9.869,1.549-17.691,5.508-23.18,12c-14.095,16.648-9.667,44.103-9.62,44.38l0.058,143.772 l86.225,36.758l12.039,5.135l26.048,11.102v-0.172V226.172c0-0.153,0-0.622,0.01-1.033c0.009-3.911-0.287-19.068-5.317-36.462 C257.069,164.006,240.401,135.252,201.568,129.294z">
+                                            </path>
+                                            <path
+                                                d="M66.852,418.875c0.096,0-32.771,52.174-0.134,84.811c10.06,10.061,23.438,15.156,39.79,15.156 c30.877,0,63.581-18.312,75.964-30.695c17.557-17.557,70.38-76.174,85.996-93.541l-126.856-56.59L66.852,418.875z">
+                                            </path>
+                                            <path
+                                                d="M338.809,256.371c3.48-3.614,4.025-10.366,3.931-12.67l8.874-122.716l0.688-9.562l3.04-42.037l4.639,0.201 c0.143,0,13.674,0.536,26.048-1.157c8.405-1.147,8.979-7.746,9.008-9.056c0.115-0.966,2.438-13.349,3.596-29.577 c0.822-11.427-6.904-13.206-8.453-13.455L336.055,0l-7.392,111.422l-0.632,9.562l-8.902,134.19 c1.77,2.314,6.426,3.863,12.556,3.863C334.736,259.048,337.069,258.168,338.809,256.371z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg></span> <strong>{{ lang == "en" ? 'Postal Box:' : 'صندوق البريد:' }}</strong>
+                        {{ lang == "en" ? '1090485' : '126322715' }}</p>
+                    <a href="https://www.google.com/maps/place/TRITA+%7C+%D8%A7%D9%84%D9%85%D8%B9%D9%87%D8%AF+%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A+%D9%84%D9%84%D9%81%D9%86%D9%88%D9%86+%D8%A7%D9%84%D8%AA%D9%82%D9%84%D9%8A%D8%AF%D9%8A%D8%A9%E2%80%AD/@24.640876,46.7113531,17z/data=!3m1!4b1!4m5!3m4!1s0x3e2f05c39b95fc89:0xde7e5b28caa53ace!8m2!3d24.6409806!4d46.7091668?q=%D8%A7%D9%84%D9%85%D8%B9%D9%87%D8%AF+%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A+%D9%84%D9%84%D9%81%D9%86%D9%88%D9%86+%D8%A7%D9%84%D8%AA%D9%82%D9%84%D9%8A%D8%AF%D9%8A%D8%A9&rlz=1C1GCEU_enSA980SA980&um=1&ie=UTF-8&sa=X&ved=2ahUKEwiXjL3Oy8z1AhUF8BoKHTxSB4YQ_AUoAXoECAIQAw&shorturl=1"
+                        target="_blank" class="align-self-end"> {{ lang == "en" ? 'Show location on the map' : 'عرض الموقع على الخريطة'
+                        }}
+                        <span class="ml-1 arrow"><span
+                                class="more align-items-center shrink-0 mt-3 rounded-circle text-left"><svg width="30"
+                                    [ngStyle]="{ 'transform': lang === 'ar' ? 'rotate(180deg)' : 'rotate(0deg)' }"
+                                    viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" fill="#025157"
+                                    style="transform: rotate(0deg);" ng-reflect-ng-style="[object Object]">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="5"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <g id="icomoon-ignore"></g>
+                                        <path
+                                            d="M19.159 16.767l0.754-0.754-6.035-6.035-0.754 0.754 5.281 5.281-5.256 5.256 0.754 0.754 3.013-3.013z"
+                                            fill="#025157"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            </span>
+                            </a>
+                </div>
+            </div>
+
+            <!-- Jeddah Card -->
+            <div class="col-md-12 col-lg-6 ">
+                <div class="location-card d-flex flex-column" [ngClass]="{ 'align-items-start' : lang==='ar' }">
+                    <h2>{{ lang == "en" ? 'Jeddah' : 'جدة' }}</h2>
+                    <p><span class="icon"><svg version="1.0" id="Layer_1" width="20" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64"
+                                enable-background="new 0 0 64 64" xml:space="preserve" fill="#000000">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill="#231F20"
+                                        d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24 C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24 C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z">
+                                    </path>
+                                </g>
+                            </svg></span> <strong>{{ lang == "en" ? 'Location:' : 'الموقع:' }}</strong>
+                        <span> {{ lang == "en" ? 'Wadi Faysal, Al-Ammariyah, Jeddah' : 'وادي فيصل، العمارية، جدة' }}</span>
+                    </p>
+                    <p><span class="icon"><svg fill="#00000" width="20" version="1.1" id="Capa_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 551.297 551.297" xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g>
+                                        <g>
+                                            <polygon
+                                                points="336.466,551.297 374.716,551.297 374.716,373.168 336.466,384.078 ">
+                                            </polygon>
+                                            <path
+                                                d="M441.329,120.985h-80.134l-8.902,122.869c0.057,0.698,0.344,11.896-6.561,19.106c-3.538,3.701-8.396,5.651-14.057,5.651 c-3.165,0-13.903-0.44-19.221-6.13c-2.084-2.228-3.079-4.972-2.888-7.946l8.874-133.55H208.97 c71.317,15.635,70.14,104.375,70.122,105.302v162.592l2.228,0.994l45.585-13.006l9.562-2.725l38.25-10.91l9.562-2.727 l114.75-32.742c0-14.734,0-73.583,0-135.653C499.029,125.871,443.681,120.985,441.329,120.985z">
+                                            </path>
+                                            <path
+                                                d="M201.568,129.294c-4.982-0.765-9.62-1.1-13.99-1.09c-1.578,0-3.088,0.096-4.581,0.201 c-1.73,0.115-3.423,0.287-5.039,0.545c-9.869,1.549-17.691,5.508-23.18,12c-14.095,16.648-9.667,44.103-9.62,44.38l0.058,143.772 l86.225,36.758l12.039,5.135l26.048,11.102v-0.172V226.172c0-0.153,0-0.622,0.01-1.033c0.009-3.911-0.287-19.068-5.317-36.462 C257.069,164.006,240.401,135.252,201.568,129.294z">
+                                            </path>
+                                            <path
+                                                d="M66.852,418.875c0.096,0-32.771,52.174-0.134,84.811c10.06,10.061,23.438,15.156,39.79,15.156 c30.877,0,63.581-18.312,75.964-30.695c17.557-17.557,70.38-76.174,85.996-93.541l-126.856-56.59L66.852,418.875z">
+                                            </path>
+                                            <path
+                                                d="M338.809,256.371c3.48-3.614,4.025-10.366,3.931-12.67l8.874-122.716l0.688-9.562l3.04-42.037l4.639,0.201 c0.143,0,13.674,0.536,26.048-1.157c8.405-1.147,8.979-7.746,9.008-9.056c0.115-0.966,2.438-13.349,3.596-29.577 c0.822-11.427-6.904-13.206-8.453-13.455L336.055,0l-7.392,111.422l-0.632,9.562l-8.902,134.19 c1.77,2.314,6.426,3.863,12.556,3.863C334.736,259.048,337.069,258.168,338.809,256.371z">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg></span> <strong>{{ lang == "en" ? 'Postal Box:' : 'صندوق البريد:' }}</strong>
+                        {{ lang == "en" ? '1090485' : '22236' }}
+                    </p>
+                    <a href="https://www.google.com/maps/place/21%C2%B029'34.4%22N+39%C2%B011'29.8%22E/@21.4928864,39.1938037,17z/data=!3m1!4b1!4m4!3m3!8m2!3d21.4928864!4d39.191615?entry=ttu&g_ep=EgoyMDI0MTExOC4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank" class="align-self-end"> {{ lang == "en" ? 'Show location on the map' : 'عرض الموقع على الخريطة'
+                        }}
+                        <span class="ml-1 arrow"><span
+                                class="more align-items-center shrink-0 mt-3 rounded-circle text-left"><svg
+                                    [ngStyle]="{ 'transform': lang === 'ar' ? 'rotate(180deg)' : 'rotate(0deg)' }"
+                                    width="30" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" fill="#025157"
+                                    ng-reflect-ng-style="[object Object]">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="5"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <g id="icomoon-ignore"></g>
+                                        <path
+                                            d="M19.159 16.767l0.754-0.754-6.035-6.035-0.754 0.754 5.281 5.281-5.256 5.256 0.754 0.754 3.013-3.013z"
+                                            fill="#025157"></path>
+                                    </g>
+                                </svg></span></span></a>
+                                <!-- <p>
+                                    <strong style="font-size: 22px;">(ورث) المعهد الملكي للفنون التقليدية</strong>
+                                    <br>
+                                    <span  style="font-size: 20px;">(WRTH) Royal Institute of Traditional Arts</span>
+                                </p> -->
+                                
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

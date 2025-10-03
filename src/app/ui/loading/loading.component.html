@@ -1,0 +1,62 @@
+<ng-container *ngIf="type=='general'">
+  <div class="loading">
+    <div class="loading-img">
+      <img src="assets/images/logo/Wrth-Vertical Lockup.svg" alt="logo" />
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="type=='blog-cards'">
+  <div class="row">
+    <ng-container *ngFor="let item of [1,2,3]">
+      <div style="margin-bottom: 20px; width: 545px;" class="col-lg-4  col-md-6  col-12">
+        <div class="blog-card mb-4 w-100 loading">
+          <div class="img-container shimmer"></div>
+          <div class="card-body">
+            <div class="wrapper">
+              <h5 class="card-title shimmer"></h5>
+              <p class="card-text shimmer"></p>
+            </div>
+            <div class="field">
+              <div class="btn"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</ng-container>
+<ng-container *ngIf="type=='news-cards'">
+  <div class="row">
+    <ng-container *ngFor="let item of [1,2,3]">
+      <div class="news-card d-flex flex-column flex-grow-1 mb-4 col-lg-4  col-md-6  col-12" style="width: 545px;">
+        <div class="img-container position-relative w-100 overflow-hidden shrink-0 news-shimmer">
+          <div class="shimmer-effect"></div>
+        </div>
+        <div class="card-news-body p-0 d-flex flex-column">
+          <div class="wrapper d-flex flex-column justify-content-between flex-grow-1">
+            <div class="title d-flex f-row g-1 justify-content-between">
+              <div class="shimmer-title"></div>
+              <div class="shimmer-more"></div>
+            </div>
+            <p class="card-text shimmer-text"></p>
+          </div>
+        </div>
+      </div>
+
+    </ng-container>
+  </div>
+</ng-container>
+<ng-container *ngIf="type=='photo-gallery'">
+  <div class="d-flex flex-row flex-wrap align-items-center justify-content-center mb-5">
+    <ng-container *ngFor=" let item of [1,2,3,4]">
+      <div class="custom-gallery-container col-lg-3 m-md-0  col-md-6 col-12">
+        <div class="shimmerBG media"></div>
+        <div class="p-32">
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</ng-container>

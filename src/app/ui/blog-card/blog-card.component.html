@@ -1,0 +1,27 @@
+<div class="blog-card mb-4 " [attr.aria-label]="lang === 'ar' ? item?.titleAr || '' : item?.title || ''">
+    <div class="img-container">
+        <a [routerLink]="['/media/', name, item.slug]">
+            <img [src]="item.imageUrl" [altText]="lang === 'ar' ? item?.titleAr || '' : item?.title || ''" appImgError
+                appLazyLoadImg>
+        </a>
+    </div>
+    <a [routerLink]="['/media/', name, item.slug]">
+        <div class="card-body">
+            <div class="wrapper">
+                <h5 class="card-title " [ngClass]="{'text-right': lang !== 'ar', 'text-left': lang === 'ar'}">
+                    {{lang === 'ar' ? item?.titleAr : item?.title }}
+
+                </h5>
+                <p class="card-text" [ngClass]="{'text-right': lang !== 'ar', 'text-left': lang === 'ar'}"
+                    [innerHtml]="removeHtmlTags(lang === 'ar' ? item?.descriptionAr  : item?.description )">
+                </p>
+            </div>
+            <div class="field">
+                <button class="btn" id="readMore"
+                    [attr.aria-label]="lang === 'ar' ? 'اقرأ المزيد عن ' + item?.titleAr : 'Read more about ' + item?.title">
+                    {{lang === 'ar' ? "المزيد" :"more" }}
+                </button>
+            </div>
+        </div>
+    </a>
+</div>

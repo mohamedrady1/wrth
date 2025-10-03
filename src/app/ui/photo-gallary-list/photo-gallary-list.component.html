@@ -1,0 +1,152 @@
+<ng-container *ngIf="media.length > 0">
+    <ng-container *ngIf="media.length >= 5">
+        <div class="row">
+            <div class="col-12 col-ms-6 col-lg-12">
+                <div class="row">
+                    <ng-container *ngIf="media.length > 0">
+                        <div class="col-lg-3 col-md-6 p-md-2">
+                            <app-gallary-card [item]="media[0]" [name]="name"></app-gallary-card>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="media.length > 1">
+                        <div class="col-lg-3 col-md-6 p-md-2">
+                            <app-gallary-card [item]="media[1]" [name]="name"></app-gallary-card>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="media.length>2">
+                        <div class="col-lg-6 ">
+                            <div class="row">
+                                <ng-container *ngIf="media.length > 2">
+                                    <div class="col-12 col-md-6 col-lg-6 small p-md-2">
+                                        <app-gallary-card [item]="media[2]" [name]="name"></app-gallary-card>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="media.length > 3">
+                                    <div class="col-12 col-md-6 col-lg-6  small p-md-2">
+                                        <app-gallary-card [item]="media[3]" [name]="name"></app-gallary-card>
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="row">
+                                <ng-container *ngIf="media.length > 4">
+                                    <ng-container *ngIf="media.length > 4">
+                                        <div class="mediam col-12 p-md-2">
+                                            <app-gallary-card [item]="media[4]" [name]="name"></app-gallary-card>
+                                        </div>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="media.length<5">
+        <div class="row">
+            <div class="col-6 col-md-4 p-md-2 col-lg-3 large active" *ngFor="let item of media">
+                <app-gallary-card [item]="item" [name]="name"></app-gallary-card>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-container *ngIf="media.length > 5">
+    <ng-container *ngIf="media.length>=8">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-6  col-md-6 ">
+                        <div class="row h-100">
+                            <ng-container *ngIf="media.length > 5">
+                                <div class="col-12 large  p-md-2">
+                                    <app-gallary-card [item]="media[5]" [name]="name"></app-gallary-card>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="media.length > 6">
+                        <div class="col-lg-3 col-md-6 p-md-2">
+                            <app-gallary-card [item]="media[6]" [name]="name"></app-gallary-card>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="media.length>7">
+                        <div class="col-lg-3">
+                            <div class="row">
+                                <ng-container *ngIf="media.length>7">
+                                    <div class="col-12 col-lg-12 col-md-6 small p-md-2">
+                                        <app-gallary-card [item]="media[7]" [name]="name"></app-gallary-card>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="media.length>8">
+                                    <div class="col-12 col-lg-12 col-md-6 small p-md-2">
+                                        <app-gallary-card [item]="media[8]" [name]="name"></app-gallary-card>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="media.length<8">
+        <div class="row">
+            <div class="col-6 col-md-4 p-md-2 col-lg-3 large active" *ngFor="let item of media | slice:5">
+                <app-gallary-card [item]="item" [name]="name"></app-gallary-card>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+<ng-container *ngIf="media.length>9">
+    <ng-container *ngIf="media.length>=13">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <ng-container *ngIf="media.length>9">
+                        <!-- mediam -->
+                        <div class="col-lg-3 col-md-12 p-md-2">
+                            <app-gallary-card [item]="media[9]" [name]="name"></app-gallary-card>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="media.length>10">
+                        <div class="col-lg-6 col-md-12 h-100 p-0">
+                            <ng-container *ngIf="media.length>10">
+                                <div class="col-12 mediam  p-md-2">
+                                    <app-gallary-card [item]="media[10]" [name]="name"></app-gallary-card>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="media.length>11">
+                                <div class="col-12 ">
+                                    <div class="row">
+                                        <ng-container *ngIf="media.length>11">
+                                            <div class="col-lg-6 small p-md-2">
+                                                <app-gallary-card [item]="media[11]" [name]="name"></app-gallary-card>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="media.length>12">
+                                            <div class="col-lg-6 small p-md-2">
+                                                <app-gallary-card [item]="media[12]" [name]="name"></app-gallary-card>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="media.length>13">
+                        <div class="col-lg-3 col-md-12 p-2 large active">
+                            <app-gallary-card [item]="media[13]" [name]="name"></app-gallary-card>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="media.length<13">
+        <div class="row">
+            <div class="col-6 col-md-4 p-md-2 col-lg-3 large active" *ngFor="let item of media | slice:9">
+                <app-gallary-card [item]="item" [name]="name"></app-gallary-card>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>

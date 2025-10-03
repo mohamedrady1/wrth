@@ -1,0 +1,53 @@
+<div *ngIf="!isLoading">
+  <h1 class="mb-3 active" [ngClass]="{'ltr': lang=='en', 'rtl': lang=='ar'}" class="title">
+    {{ lang === "ar" ? pageContent?.subtitleAr || pageContent?.titleAr||"" : pageContent?.subtitle ||
+    pageContent?.title||""
+    }}
+  </h1>
+  <ng-container *ngIf="pageContent?.slug!=='theinstituteservices'">
+    <ng-container *ngIf="pageContent?.imageUrl&&!imageError">
+      <div class="img-container mt-2 mt-md-3 bg-red">
+        <img [src]="pageContent?.imageUrl" [alt]="pageContent?.title" class="mb-4 w-100 h-100 object-fill"
+          (error)="handleError()" />
+      </div>
+
+    </ng-container>
+  </ng-container>
+  <ng-container
+    *ngIf="pageContent?.slug!=='institutestrategy'&&pageContent?.slug!=='executivemanagement'&&pageContent?.slug!=='theinstituteservices'&&pageContent?.slug!=='objectives'">
+    <div [innerHtml]="
+        lang === 'ar'
+          ? pageContent?.descriptionAr || ''
+          : pageContent?.description || ''
+      " class="my-5 pb-5"></div>
+  </ng-container>
+  <ng-container *ngIf="pageContent?.slug==='theinstituteservices'">
+    <div class="my-5">
+      <app-institute-services [items]="pageContent?.pitems" [lang]="lang"></app-institute-services>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="pageContent?.slug==='executivemanagement'">
+    <app-management-cards [items]="pageContent?.eitems" [lang]="lang"></app-management-cards>
+    <!-- <div class="mt-5 mt-3" [ngClass]="{'text-right': lang !== 'ar', 'text-left': lang === 'ar'}"
+      [innerHtml]="lang === 'ar' ? pageContent?.descriptionAr  : pageContent?.description">
+    </div> -->
+  </ng-container>
+  <ng-container *ngIf="pageContent?.slug==='institutestrategy'">
+    <app-tabs [items]="pageContent?.sitems" [lang]="lang"></app-tabs>
+    <!-- <div class="mt-5 mt-3" [ngClass]="{'text-right': lang !== 'ar', 'text-left': lang === 'ar'}"
+      [innerHtml]="lang === 'ar' ? pageContent?.descriptionAr  : pageContent?.description">
+    </div> -->
+  </ng-container>
+  <ng-container *ngIf="pageContent?.slug==='objectives'">
+    <app-wrth-goals [items]="pageContent?.gitems" [lang]="lang"></app-wrth-goals>
+
+    <!-- <div class="mt-5 mt-3" [ngClass]="{'text-right': lang !== 'ar', 'text-left': lang === 'ar'}"
+      [innerHtml]="lang === 'ar' ? pageContent?.descriptionAr  : pageContent?.description">
+    </div> -->
+  </ng-container>
+
+</div>
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>

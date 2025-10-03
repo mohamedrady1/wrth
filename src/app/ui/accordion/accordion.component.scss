@@ -1,0 +1,12 @@
+.accordion {
+  &-heading {
+    font-size: 24px;
+    user-select: none;
+    cursor: pointer;
+
+    &.active {
+      color: rgb(0, 0, 105);
+      font-weight: 600;
+    }
+  }
+}

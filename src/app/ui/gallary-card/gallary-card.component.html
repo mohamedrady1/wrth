@@ -1,0 +1,15 @@
+<div class="gallery-card" [attr.aria-label]="lang === 'ar' ? item?.titleAr || '' : item?.title || ''">
+    <a [routerLink]="['/media/', name, item.slug]">
+        <div class="img-container">
+            <img [src]="item.imageUrl" [altText]="lang === 'ar' ? item?.titleAr || '' : item?.title || ''" appImgError
+                appLazyLoadImg>
+            <div class="overlay"></div>
+        </div>
+        <div class="gallery-photo">
+            <img src="https://wrth.edu.sa/themes/rita/images/icons/Photo%20Gallery.svg" alt="icon">
+        </div>
+    </a>
+    <h5 class="card-title " [ngClass]="{'text-right': lang !== 'ar', 'text-left': lang === 'ar'}"
+        [ngStyle]="lang === 'ar' ? {'right': '20px'} : {'left': '20px'}">
+        {{lang === 'ar' ? item?.titleAr : item?.title }}
+    </h5>

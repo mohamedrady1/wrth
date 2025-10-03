@@ -1,0 +1,38 @@
+<div class="" *ngIf="!isLoading">
+  <h1 class="my-5 font-weight-semibold">
+    {{ lang == "en" ? 'Training courses' : 'الدورات التدريبية' }}
+  </h1>
+
+  <div class="text-center d-flex mb-4 links">
+    <p class="w-50 border-bottom pb-3" (click)="changeSelectedTap('available')"
+      [ngClass]="{ active: selectedTap === 'available' }">
+      {{ lang == "en" ? 'Available for registration' : 'متاح للتسجيل'}}
+    </p>
+    <p class="w-50 border-bottom pb-3" (click)="changeSelectedTap('all')" [ngClass]="{ active: selectedTap === 'all' }">
+      {{ lang == "en" ? 'All' : 'الكل' }} </p>
+  </div>
+  <div class="row mb-5" *ngIf="selectedTap === 'available'">
+    <p *ngIf="coursesList?.length == 0">
+      {{ lang == "en" ? 'There are no academic programs available for registration right now.' : 'لا توجد برامج أكاديمية متاحة للتسجيل الآن.' }}
+    </p>
+    <div class="col-md-4" *ngFor="let item of coursesList">
+      <app-card [title]="lang === 'ar' ? item?.titleAr || '' : item?.title || ''" [description]="
+          lang === 'ar' ? item?.descriptionAr || '' : item?.descriptionEn || ''
+        " [imageUrl]="item.photoFile" [className]="'h-90'" [link]="['/program/', slug, item.slug]"></app-card>
+    </div>
+  </div>
+  <div class="row mb-5" *ngIf="selectedTap === 'all'">
+    <p *ngIf="allCourses?.length == 0">
+      {{ lang == "en" ? 'There are no academic programs available for registration right now.' : 'لا توجد برامج أكاديمية متاحة للتسجيل الآن.' }}
+    </p>
+    <div class="col-md-4" *ngFor="let item of allCourses">
+      <app-card [title]="lang === 'ar' ? item?.titleAr || '' : item?.titleEn || ''" [description]="
+          lang === 'ar' ? item?.descriptionAr || '' : item?.descriptionEn || ''
+        " [imageUrl]="item.photoFile" [className]="'h-90'" [link]="['/program/', slug, item.slug]"></app-card>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>

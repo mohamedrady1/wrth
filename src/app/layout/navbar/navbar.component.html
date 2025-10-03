@@ -1,0 +1,364 @@
+<header id="header" [ngClass]="{ 'position-absolute top-0 start-0 w-100': whiteText }" class="header" role="banner"
+  aria-label="Site header">
+  <nav class="navbar desktop-navbar container" id="navbar-top">
+    <div class="navbar-form">
+      <a [routerLink]="['/']" title="الرئيسية" rel="home" class="navbar-brand d-block">
+        <img [src]="'assets/images/logo/Wrth-Vertical Lockup.svg'" [ngClass]="{ 'white-logo': whiteText }" alt="الرئيسية" class="img-fluid d-block align-top" />
+        <span class="d-block"></span>
+      </a>
+    </div>
+    <div class="navigation-bar d-none d-xl-flex">
+      <section class="region region-header-collapse-top">
+        <nav role="navigation" aria-labelledby="block-search-menu" id="block-search"
+          class="block block-menu navigation menu--search ">
+          <h2 class="sr-only" id="block-search-menu">Search</h2>
+
+          <ul class="clearfix nav">
+            <li class="nav-item">
+              <a routerLink="/search" class="search nav-link nav-link--search" [ngClass]="{ 'text-white': whiteText }"
+                data-drupal-link-system-path="search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="language-switcher-language-url block block-language block-language-blocklanguage-interface"
+          id="block-languageswitcher" role="navigation">
+          <span class="cursor-pointer" [ngClass]="{
+                'text-white border-light border px-2': whiteText,
+                'text-dark border-dark border px-2': !whiteText,
+                'is-active': selectedLanguage === 'en',
+                'hidden' : selectedLanguage === 'ar',
+              }" (click)="changeLanguage('ar')">Ar</span>
+          <span class="cursor-pointer" [ngClass]="{
+                'text-white border-light border px-2': whiteText,
+                'text-dark border-dark border px-2': !whiteText,
+                'is-active': selectedLanguage === 'ar',
+                'hidden' : selectedLanguage === 'en',
+              }" (click)="changeLanguage('en')">En</span>
+        </div>
+      </section>
+
+      <section class="region region-header-collapse-bottom">
+        <nav role="navigation" aria-labelledby="block-rita-main-menu-menu" id="block-rita-main-menu"
+          class="block block-menu navigation menu--main text-capitalize">
+          <h2 class="sr-only" id="block-rita-main-menu-menu">
+            {{ selectedLanguage == "en" ? "Main navigation" : "التنقل الرئيسي" }}
+          </h2>
+
+          <ul class="menu menu-level-0">
+            <li class="menu-item">
+              <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                class="nav-menu-link" [ngClass]="{ 'text-white': whiteText }" data-drupal-link-system-path="<front>">{{
+                navbarLocal.home[selectedLanguage] }}</a>
+
+              <div
+                class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                <div class="container-xl menu-dropdown-wrapper"></div>
+              </div>
+            </li>
+
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/about/abouttheinstitute']" routerLinkActive="active"
+                (click)="setActiveIndex('/about')" [class.active]="path=='/about'&&activeIndex === null"
+                class="nav-menu-link" [ngClass]="{ 'text-white': whiteText }" data-drupal-link-system-path="node/4">{{
+                navbarLocal.about[selectedLanguage] }}</a>
+              <i class="fa fa-angle-down dropdown-icon"></i>
+
+              <div
+                class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <section class="none clearfix seeds-section seeds-2col">
+                    <div class="no-container">
+                      <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                    </div>
+                  </section>
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let about of allNavLinks?.aboutInstitutePages">
+                      <a [routerLink]="['/about/', about.slug]" data-drupal-link-system-path="node/5"
+                        (click)="setActiveIndex('/about')">{{
+                        selectedLanguage === "ar"
+                        ? about.titleAr
+                        : about.title
+                        }}</a>
+
+                      <div
+                        class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                        <div class="container-xl menu-dropdown-wrapper"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/program']" [ngClass]="{ 'active': activeIndex === 0 }"
+                (click)="setActiveIndex('/program/',0)" class="nav-menu-link" [ngClass]="{ 'text-white': whiteText }"
+                data-drupal-link-system-path="node/34">{{
+                navbarLocal.programs[selectedLanguage] }}</a>
+              <i class="fa fa-angle-down dropdown-icon"></i>
+              <div
+                class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <section class="none clearfix seeds-section seeds-2col">
+                    <div class="no-container">
+                      <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                    </div>
+                  </section>
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let program of allNavLinks?.educationPrograms">
+                      <a [routerLink]="['/program/', program.slug]" data-drupal-link-system-path="node/5"
+                        (click)="setActiveIndex('/program/',0)">{{
+                        selectedLanguage === "ar"
+                        ? program.titleAr
+                        : program.title
+                        }}</a>
+
+                      <div
+                        class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                        <div class="container-xl menu-dropdown-wrapper"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/program/entrepreneurshipandincubationprograms']"
+                [ngClass]="{ 'active': activeIndex === 1 }" (click)="setActiveIndex('/program/',1)"
+                class="nav-menu-link" [ngClass]="{ 'text-white': whiteText }" data-drupal-link-system-path="node/34">{{
+                navbarLocal.programs3[selectedLanguage] }}</a>
+              <i class="fa fa-angle-down dropdown-icon"></i>
+
+              <div
+                class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <section class="none clearfix seeds-section seeds-2col">
+                    <div class="no-container">
+                      <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                    </div>
+                  </section>
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let program of allNavLinks?.leaderPages">
+                      <a [routerLink]="['/program/', program.slug]" data-drupal-link-system-path="node/5"
+                        (click)="setActiveIndex('/program/',1)">{{
+                        selectedLanguage === "ar"
+                        ? program?.titleAr
+                        : program?.title
+                        }}</a>
+
+                      <div
+                        class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                        <div class="container-xl menu-dropdown-wrapper"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/program/communityprograms']" routerLinkActive="active"
+                [ngClass]="{ 'active': activeIndex === 2 }" (click)="setActiveIndex('/program/',2)"
+                class=" nav-menu-link" [ngClass]="{ 'text-white': whiteText }" data-drupal-link-system-path="node/34">{{
+                navbarLocal.programs4[selectedLanguage] }}</a>
+              <i class="fa fa-angle-down dropdown-icon"></i>
+
+              <div
+                class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <section class="none clearfix seeds-section seeds-2col">
+                    <div class="no-container">
+                      <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                    </div>
+                  </section>
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let program of allNavLinks?.communicationPages">
+                      <a [routerLink]="['/program/', program.slug]" data-drupal-link-system-path="node/5"
+                        (click)="setActiveIndex('/program/',2)">{{
+                        selectedLanguage === "ar" ? program?.titleAr : program?.title }}</a>
+                      <div
+                        class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                        <div class="container-xl menu-dropdown-wrapper"></div>
+                      </div>
+                    </li>
+                    <li class="menu-item">
+                      <a [routerLink]="['/Events']" data-drupal-link-system-path="node/5"
+                        (click)="setActiveIndex('/program/',2)">{{
+                        selectedLanguage === "ar" ? "الفعاليات" : "Events" }}</a>
+                      <div
+                        class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                        <div class="container-xl menu-dropdown-wrapper"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <!-- <li class="menu-item menu-item--expanded">
+                <a [routerLink]="['/program' , allNavLinks?.educationPrograms?.[0]?.slug]" routerLinkActive="active"
+                  class="nav-menu-link" [ngClass]="{ 'text-white': whiteText }" data-drupal-link-system-path="node/4">{{
+                  navbarLocal.programs3[selectedLanguage] }}</a>
+                <i class="fa fa-angle-down dropdown-icon"></i>
+  
+                <div
+                  class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                  <div class="container-xl menu-dropdown-wrapper">
+                    <section class="none clearfix seeds-section seeds-2col">
+                      <div class="no-container">
+                        <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                      </div>
+                    </section>
+                    <ul class="menu menu-level-1">
+                      <li class="menu-item" *ngFor="let page of allNavLinks?.educationPrograms">
+                        <a [routerLink]="page?.link" data-drupal-link-system-path="node/5">{{
+                          selectedLanguage === "ar"
+                          ? page?.titleAr
+                          : page?.title
+                          }}</a>
+  
+                        <div
+                          class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                          <div class="container-xl menu-dropdown-wrapper"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="menu-item menu-item--expanded">
+                <a [routerLink]="['/program' , allNavLinks?.educationPrograms?.[0]?.slug]" routerLinkActive="active"
+                  class="nav-menu-link" [ngClass]="{ 'text-white': whiteText }" data-drupal-link-system-path="node/4">{{
+                  navbarLocal.programs4[selectedLanguage] }}</a>
+                <i class="fa fa-angle-down dropdown-icon"></i>
+  
+                <div
+                  class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                  <div class="container-xl menu-dropdown-wrapper">
+                    <section class="none clearfix seeds-section seeds-2col">
+                      <div class="no-container">
+                        <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                      </div>
+                    </section>
+                    <ul class="menu menu-level-1">
+                      <li class="menu-item" *ngFor="let page of allNavLinks?.educationPrograms">
+                        <a [routerLink]="[page?.link]" data-drupal-link-system-path="node/5">{{
+                          selectedLanguage === "ar"
+                          ? page?.titleAr
+                          : page?.title
+                          }}</a>
+  
+                        <div
+                          class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                          <div class="container-xl menu-dropdown-wrapper"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li> -->
+            <li class="menu-item menu-item--expanded">
+              <a [routerLink]="['/media-center']" routerLinkActive="active" (click)="setActiveIndex('/media')"
+                routerLink="active" [class.active]="path=='/media'&&activeIndex === null" class="nav-menu-link"
+                [ngClass]="{ 'text-white': whiteText }" data-drupal-link-system-path="node/34">{{
+                navbarLocal.media[selectedLanguage] }}</a>
+              <i class="fa fa-angle-down dropdown-icon"></i>
+
+              <div
+                class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <section class="none clearfix seeds-section seeds-2col">
+                    <div class="no-container">
+                      <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                    </div>
+                  </section>
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let media of mediaPages">
+                      <a [routerLink]="['/media/', media.slug]" data-drupal-link-system-path="node/5"
+                        (click)="setActiveIndex('/media')">{{
+                        selectedLanguage === "ar"
+                        ? media?.titleAr
+                        : media?.title
+                        }}</a>
+
+                      <div
+                        class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                        <div class="container-xl menu-dropdown-wrapper"></div>
+                      </div>
+                    </li>
+                    <!-- <li class="menu-item">
+                        <a [routerLink]="['/Events']" data-drupal-link-system-path="node/5">{{
+                          selectedLanguage === "ar" ? "الفعاليات" : "Events"
+                          }}</a>
+                        <div
+                          class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                          <div class="container-xl menu-dropdown-wrapper"></div>
+                        </div>
+                      </li> -->
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <li class="menu-item menu-item--expanded">
+
+              <a href="https://lms.wrth.edu.sa/" class="nav-menu-link" [ngClass]="{ 'text-white': whiteText }"
+                data-drupal-link-system-path=" node/34" target="_blank">{{
+                navbarLocal.studentLogin[selectedLanguage] }}</a>
+
+              <div
+                class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
+                <div class="container-xl menu-dropdown-wrapper">
+                  <section class="none clearfix seeds-section seeds-2col">
+                    <div class="no-container">
+                      <app-fixed-navbar-links [fixedLinks]="fixedNavbarLinks"></app-fixed-navbar-links>
+                    </div>
+                  </section>
+                  <ul class="menu menu-level-1">
+                    <li class="menu-item" *ngFor="let media of loginPages">
+                      <a [href]="media?.link" target="_blank" data-drupal-link-system-path="node/5">{{
+                        selectedLanguage === "ar"
+                        ? media?.titleAr
+                        : media?.title
+                        }}</a>
+
+                      <div
+                        class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                        <div class="container-xl menu-dropdown-wrapper"></div>
+                      </div>
+                    </li>
+                    <!-- <li class="menu-item">
+                        <a [routerLink]="['/Events']" data-drupal-link-system-path="node/5">{{
+                          selectedLanguage === "ar" ? "الفعاليات" : "Events"
+                          }}</a>
+                        <div
+                          class="menu_link_content menu-link-contentmain view-mode-default menu-dropdown menu-dropdown-1 menu-type-default">
+                          <div class="container-xl menu-dropdown-wrapper"></div>
+                        </div>
+                      </li> -->
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <li class="menu-item" [ngClass]="{ 'text-white': whiteText }"
+              *ngIf="menuItems.includes('Institute Visitors')">
+              <a routerLink="/VisitorEntryRequest">
+                {{ selectedLanguage == "en" ? "Visitor Entry Permit" : "تصريح دخول الزوار" }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </div>
+    <button class="navbar-toggler navbar-toggler-right nav-menu-link" [ngClass]="{ collapsed: !showMenu }" type="button"
+      data-toggle="collapse" data-target="#CollapsingNavbar" (click)="toggleMenu()">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </nav>
+  <app-navbar-mobile [whiteText]="whiteText" [menuItems]="menuItems" [aboutInstitutePages]="aboutInstitutePages"
+  [EntrepreneurshipPages]="EntrepreneurshipPages"[awarenessprogrammes]="awarenessprogrammes"
+    [showMenu]="showMenu" [fixedNavbarLinks]="fixedNavbarLinks" [educationProgramsPages]="educationProgramsPages"
+    [mediaPages]="mediaPages" [loginPages]="loginPages" ></app-navbar-mobile>
+</header>

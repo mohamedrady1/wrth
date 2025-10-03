@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="page-path d-flex flex-wrap align-items-center mb-3">
+        <a [routerLink]="['']">
+            {{ lang == "ar" ? "الرئيسية" : 'Home'}}
+        </a>
+    </div>
+    <h1 class="page-title">{{ lang == "ar" ? heading.titleAr : heading.title }}</h1>
+
+    <div class="row" *ngIf="!isLoading &&!isLangChange">
+        <div class=" col-lg-4 col-md-6" *ngFor="let item of media">
+            <app-blog-card [item]="item" [name]="'institute-blogs'"></app-blog-card>
+        </div>
+    </div>
+    <ng-container *ngIf="isLoading">
+        <app-loading [type]="'blog-cards'"></app-loading>
+    </ng-container>
+    <!-- Pagination -->
+    <!-- <div class="pagination mb-3" *ngIf="!isLoading">
+        <ng-container *ngIf="totalPages > 1">
+            <ng-container *ngIf="page!=1">
+                <button [disabled]="page === 1" (click)="goToPage(1)">««</button>
+                <button [disabled]="page === 1" (click)="goToPage(page - 1)">«</button></ng-container>
+            <ng-container *ngFor="let p of pages">
+                <button [class.active]="p === page" (click)="goToPage(p)">
+                    {{ p }}
+                </button>
+            </ng-container>
+            <ng-container *ngIf="page!=totalPages">
+
+                <button [disabled]="page === totalPages" (click)="goToPage(page + 1)">
+                    »
+                </button>
+                <button [disabled]="page === totalPages" (click)="goToPage(totalPages)">
+                    »»
+                </button>
+            </ng-container>
+        </ng-container>
+    </div>
+-->
+</div>

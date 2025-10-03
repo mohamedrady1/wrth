@@ -1,0 +1,26 @@
+<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="" [dir]="lang === 'ar' ? 'rtl' : 'ltr'">
+  <div id="page-wrapper">
+    <div id="page">
+      <app-navbar></app-navbar>
+      <div class="highlighted">
+        <aside class="container section clearfix" role="complementary"></aside>
+      </div>
+      <div class="featured-top">
+        <aside class="featured-top__inner section container clearfix" role="complementary"></aside>
+      </div>
+      <div id="main-wrapper" class="layout-main-wrapper clearfix">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+      <div class="copyright">
+        <div class="container">
+          <p>
+            <span>©</span> {{ lang === 'ar' ? ' جميع الحقوق محفوظة | المعهد الملكي للفنون التقليدية (ورث) |' : 'All
+            rights reserved | Royal Institute of Traditional Arts (Wrth) |' }}
+            2025
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

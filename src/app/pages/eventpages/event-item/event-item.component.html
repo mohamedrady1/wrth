@@ -1,0 +1,53 @@
+<a [routerLink]="'/Events/' + event.id + '/Details'">
+  <div class="item_event_list">
+    <div class="img_item_list">
+      <img [src]="event.photoFile" alt="" />
+      <div class="date_item">
+        <ul>
+          <li>
+            <span class="from_to">
+              {{ lang == "ar" ? 'من' : 'From' }}
+            </span>
+            <h4 [innerHTML]="extractDayNumber(event.startDate)"></h4>
+
+            <h5>{{ formatDateMonthYear(event.startDate) }} </h5>
+            <span> <img class="imgClock" [src]="'assets/images/clock.svg'" alt="">{{ formatTime(event.startDate)
+              }}</span>
+          </li>
+          <li>
+            <span class="from_to">
+              {{ lang == "ar" ? 'الي' : 'To' }}
+            </span>
+            <h4 [innerHTML]="extractDayNumber(event.endDate)"></h4>
+            <h5>{{ formatDateMonthYear(event.endDate) }} </h5>
+            <span><img class="imgClock" [src]="'assets/images/clock.svg'" alt=""> {{ formatTime(event.endDate) }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="details_item_events">
+      <h1>{{ event.titleAr }}</h1>
+      <!-- <p appTruncateText [truncateLength]="50" [innerHTML]="event.detailsAr">
+      </p> -->
+      <div class="" *ngIf="event.registeredUsers < event.usersQuota && isFutureDate(event.endDate)"> 
+        <!-- {{ lang == "ar" ? 'عدد المقاعد المتاحة' : 'Available seats' }} 
+        <span style="color: #1e645c;">{{ event.usersQuota - event.registeredUsers }}</span> -->
+        <div class="Btn_item_list">       
+        <a class="Btn_calender" (click)="addEventToCalender()">
+          <img [src]="'assets/images/calender.svg'" alt="" />
+          {{ lang == "ar" ? 'أضف إلى التقويم' : 'Add to calendar' }} </a>
+        <a class="Btn_register" [routerLink]="'/Events/'+ event.id +'/Register'">
+          <img [src]="'assets/images/userregister.svg'" alt="" />
+          {{ lang == "ar" ? 'التسجيل في الفعالية' : 'Register for the event' }}
+        </a>
+      </div>
+    </div>
+      <div class="eventEnd" *ngIf="!isFutureDate(event.endDate)">
+        {{ lang == "ar" ? 'انتهت الفعالية' : 'The event has ended' }}
+      </div>
+      <div class="eventEnd" *ngIf="event.registeredUsers >= event.usersQuota && isFutureDate(event.endDate)">
+        {{ lang == "ar" ? 'امتلاء الحجز' : 'The reservation is full' }}
+      </div>
+    </div>
+  </div>
+</a>

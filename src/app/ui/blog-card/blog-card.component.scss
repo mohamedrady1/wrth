@@ -1,0 +1,102 @@
+.blog-card {
+    border: 1px solid #d6d1ca;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    
+    .img-container{
+      width: 100%;
+      // height: 20rem;
+      overflow: hidden;
+      flex-shrink: 0;
+      height: 300px;
+      img{
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+          -webkit-transition: 0.3s;
+          transition: 0.3s;
+      }
+    }
+    &:hover{
+        -webkit-box-shadow: 1px 4px 10px 2px rgba(0, 0, 0, 0.16);
+        box-shadow: 1px 4px 10px 2px rgba(0, 0, 0, 0.16);
+        img {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+      }
+    }
+    
+  }
+
+
+  
+.card-body{
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0;
+    .wrapper{
+      padding: 30px;
+      padding-bottom: 0;
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    }
+    .card-title {
+      font-size: calc(1.0375rem + 1.05vw);
+      font-weight: 600;
+      color: #101820;
+      margin-bottom: 15px;
+      text-align: right;
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+  .card-text {
+    color: #555;
+    line-height: 1.5;
+    text-align: right;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 25px;
+    font-size: calc(1.2025rem + 0.15vw);
+    }
+  .field{
+    padding: 0 30px 30px;
+    }
+    .btn {
+        color: #BD9B60;
+        background-color: transparent;
+        border: 1px solid transparent;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+        padding: 8px 30px;
+        font-weight: 500;
+        font-size: 1.625rem;
+        display: inline-block;
+        border-radius: 0;
+        border-color: #BD9B60;
+        padding: 4px 30px;
+        &:hover{
+            color: #fff;
+            background-color: #BD9B60 !important;
+            border-color: transparent !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+          
+        }
+      }
+  }
+  

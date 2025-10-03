@@ -1,0 +1,35 @@
+.eventEnd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #0b332f;
+  color: #fff;
+  border-radius: 30px;
+  padding: 12px;
+  margin-top: 40px;
+}
+.details_item_events{
+  box-shadow: none !important;
+}
+.item_event_list{
+  border: 1px solid rgba(128, 128, 128, 0.252);
+  border-radius: 30px;
+  transition: .3s;
+}
+.item_event_list:hover{
+  box-shadow: 0px 0px 8px 6px #00000017;
+}
+.from_to{
+
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important; 
+}
+.img_item_list{
+  max-height: 350px;
+  height: 360px;
+  img{
+    height: 100%;
+  }
+}

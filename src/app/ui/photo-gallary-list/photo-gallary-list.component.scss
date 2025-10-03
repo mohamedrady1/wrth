@@ -1,0 +1,41 @@
+.small{
+    height: 345px;
+  }
+  .mediam{
+    height: 372px;
+    }
+  .large.active{
+    height: 700px;
+  
+  }
+  @media (max-width:1024px) {
+    .large.active{
+      height: inherit;
+    
+    }
+    .small{
+      height: inherit;
+    }
+    .mediam{
+      height: inherit;
+    }
+  }
+ 
+  @media(max-width:767px){
+
+    .small{
+      height: auto;
+    }
+    .mediam{
+      height: auto;
+    }
+    .large{
+      height: auto;
+    
+    }
+   
+    .row{
+      gap: 10px;
+      margin-bottom: 3px;
+      }
+  }

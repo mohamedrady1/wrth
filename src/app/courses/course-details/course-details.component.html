@@ -1,0 +1,111 @@
+<div class="" *ngIf="!isLoading">
+  <h1 class="mb-1 font-weight-semibold">
+    {{ lang == "en" ? coursesDetails?.titleEn : coursesDetails?.titleAr }}
+  </h1>
+
+  <p class="py-4" [innerHtml]="
+      lang == 'en'
+        ? coursesDetails?.descriptionEn
+        : coursesDetails?.descriptionAr
+    "></p>
+
+  <div class="row mb-5">
+    <ng-container *ngIf="isValid(lang === 'en' ? coursesDetails?.locationEn : coursesDetails?.locationAr)">
+
+      <div class="col-lg-4 mb-2">
+        <div class="bg-light px-4 py-3 h-100">
+          <p class="font-weight-semibold mb-2">الموقع</p>
+          <p class="mb-0">
+            <i class="fa-solid fa-location-dot"></i>
+            {{
+            lang == "en"
+            ? coursesDetails?.locationEn
+            : coursesDetails?.locationAr
+            }}
+          </p>
+        </div>
+      </div>
+    </ng-container>
+    <!-- <div class="col-lg-4 mb-2 col-sm-6" *ngIf="coursesDetails?.id !== 90">
+      <div class="bg-light px-4 py-3 h-100">
+        <p class="font-weight-semibold mb-2">بداية الدورة التدريبية</p>
+        <p class="mb-0">
+          <i class="fa-regular fa-calendar-days"></i>
+          {{ coursesDetails?.startDate | date : "dd-MM-YYYY" }}
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-2 col-sm-6" *ngIf="coursesDetails?.id !== 90">
+      <div class="bg-light px-4 py-3 h-100">
+        <p class="font-weight-semibold mb-2">نهاية الدورة التدريبية</p>
+        <p class="mb-0">
+          <i class="fa-regular fa-calendar-days"></i>
+          {{ coursesDetails?.endDate | date : "dd-MM-YYYY" }}
+        </p>
+      </div>
+    </div> -->
+  </div>
+
+  <div [innerHtml]="
+      lang == 'en' ? coursesDetails?.detailsEn : coursesDetails?.detailsAr
+    "></div>
+  <ng-container
+    *ngIf="coursesDetails?.startDate || coursesDetails?.endDate || coursesDetails?.startTime || coursesDetails?.endTime || coursesDetails?.courseLanguage || coursesDetails?.usersQuota">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <ng-container *ngIf="coursesDetails?.startDate">
+            <th>{{ lang == 'en' ? 'Course Start Time' : 'تاريخ بداية الدورة' }}</th>
+          </ng-container>
+          <ng-container *ngIf="coursesDetails?.endDate">
+            <th>{{ lang == 'en' ? 'Course End Time' : 'تاريخ نهاية الدورة' }}</th>
+          </ng-container>
+          <ng-container *ngIf="coursesDetails?.startTime">
+            <th>{{ lang == 'en' ? 'Course Start Time' : 'وقت بداية الدورة' }}</th>
+          </ng-container>
+          <ng-container *ngIf="coursesDetails?.endTime">
+            <th>{{ lang == 'en' ? 'Course End Time' : 'وقت نهاية الدورة' }}</th>
+          </ng-container>
+          <ng-container *ngIf="coursesDetails?.courseLanguage">
+            <th>{{ lang == 'en' ? 'Course Language' : 'لغة الدورة' }}</th>
+          </ng-container>
+          <ng-container *ngIf="coursesDetails?.usersQuota">
+            <th>{{ lang == 'en' ? 'Seats Available' : 'عدد المقاعد' }}</th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="coursesDetails?.startDate">
+          <td>{{ coursesDetails?.startDate | date: 'dd-MM-YYYY' }}</td>
+        </ng-container>
+        <ng-container *ngIf="coursesDetails?.endDate">
+          <td>{{ coursesDetails?.endDate | date: 'dd-MM-YYYY' }}</td>
+        </ng-container>
+        <ng-container *ngIf="coursesDetails?.startTime">
+          <td>{{ formatTime(coursesDetails?.startTime) }}</td>
+        </ng-container>
+        <ng-container *ngIf="coursesDetails?.endTime">
+          <td>{{ formatTime(coursesDetails?.endTime) }}</td>
+        </ng-container>
+        <ng-container *ngIf="coursesDetails?.courseLanguage">
+          <td>{{ coursesDetails?.courseLanguage }}</td>
+        </ng-container>
+        <ng-container *ngIf="coursesDetails?.usersQuota">
+          <td>{{ coursesDetails?.usersQuota }}</td>
+        </ng-container>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <div class="mb-5 mt-4">
+    <a [href]="coursesDetails?.registerLink" *ngIf="coursesDetails?.isCourseOpen && coursesDetails?.isCoursePublished">
+      <app-button label="سجل الان"></app-button>
+    </a>
+    <app-button label="التسجيل مغلق" [disabled]="true"
+      *ngIf="!coursesDetails?.isCourseOpen || !coursesDetails?.isCoursePublished"></app-button>
+  </div>
+</div>
+
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>

@@ -1,0 +1,9 @@
+<div class="container" *ngIf="!isLoading">
+  <h1 class="pt-5">
+    {{ lang === "ar" ? "الشروط والاحكام" : "Terms and Conditions" }}
+  </h1>
+  <div class="my-5" [innerHtml]="lang === 'ar' ? terms?.descriptionAr || '' : terms?.description || ''"></div>
+</div>
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
